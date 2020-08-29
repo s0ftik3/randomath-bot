@@ -1,0 +1,66 @@
+{
+    "name": "Randomath",
+    "version": "2.4.0",
+    "author": "@id160",
+    "main_keyboard": [
+        [{ "text": "🎓 Study", "callback_data": "train" }],
+        [{ "text": "📕 Help", "callback_data": "help" }],
+        [{ "text": "🏅 Achievements", "callback_data": "achievements" }, { "text": "⚙️ Options", "callback_data": "options" }]
+    ],
+    "train_keyboard": [
+        [{ "text": "➕ Addition", "callback_data": "add" }, { "text": "➖ Subtraction", "callback_data": "sub" }],
+        [{ "text": "✖️ Multiplication", "callback_data": "mult" }, { "text": "➗ Division", "callback_data": "dev" }],
+        [{ "text": "⚖️ Comparison", "callback_data": "comp" }],
+        [{ "text": "⬅️ Back", "callback_data": "back" }]
+    ],
+    "train_keyboard_less_5_lvl": [
+        [{ "text": "➕ Addition", "callback_data": "add" }, { "text": "➖ Subtraction", "callback_data": "sub" }],
+        [{ "text": "🔒 Multiplication", "callback_data": "mult:block" }, { "text": "🔒 Division", "callback_data": "dev:block" }],
+        [{ "text": "🔒 Comparison", "callback_data": "comp:block" }],
+        [{ "text": "⬅️ Back", "callback_data": "back" }]
+    ],
+    "train_keyboard_less_10_lvl": [
+        [{ "text": "➕ Addition", "callback_data": "add" }, { "text": "➖ Subtraction", "callback_data": "sub" }],
+        [{ "text": "✖️ Multiplication", "callback_data": "mult" }, { "text": "➗ Division", "callback_data": "dev" }],
+        [{ "text": "🔒 Comparison", "callback_data": "comp:block" }],
+        [{ "text": "⬅️ Back", "callback_data": "back" }]
+    ],
+    "help_keyboard": [
+        [{ "text": "⬅️ Back", "callback_data": "back" }]
+    ],
+    "main_keyboard_ru": [
+        [{ "text": "🎓 Изучать", "callback_data": "train:ru" }],
+        [{ "text": "📕 Помощь", "callback_data": "help:ru" }],
+        [{ "text": "🏅 Достижения", "callback_data": "achievements:ru" }, { "text": "⚙️ Настройки", "callback_data": "options:ru" }]
+    ],
+    "train_keyboard_ru": [
+        [{ "text": "➕ Сложение", "callback_data": "add:ru" }, { "text": "➖ Вычитание", "callback_data": "sub:ru" }],
+        [{ "text": "✖️ Умножение", "callback_data": "mult:ru" }, { "text": "➗ Деление", "callback_data": "dev:ru" }],
+        [{ "text": "⚖️ Сравнение", "callback_data": "comp:ru" }],
+        [{ "text": "⬅️ Назад", "callback_data": "back:ru" }]
+    ],
+    "train_keyboard_ru_less_5_lvl": [
+        [{ "text": "➕ Сложение", "callback_data": "add:ru" }, { "text": "➖ Вычитание", "callback_data": "sub:ru" }],
+        [{ "text": "🔒 Умножение", "callback_data": "mult:ru:block" }, { "text": "🔒 Деление", "callback_data": "dev:ru:block" }],
+        [{ "text": "🔒 Сравнение", "callback_data": "comp:ru:block" }],
+        [{ "text": "⬅️ Назад", "callback_data": "back:ru" }]
+    ],
+    "train_keyboard_ru_less_10_lvl": [
+        [{ "text": "➕ Сложение", "callback_data": "add:ru" }, { "text": "➖ Вычитание", "callback_data": "sub:ru" }],
+        [{ "text": "✖️ Умножение", "callback_data": "mult:ru" }, { "text": "➗ Деление", "callback_data": "dev:ru" }],
+        [{ "text": "🔒 Сравнение", "callback_data": "comp:ru:block" }],
+        [{ "text": "⬅️ Назад", "callback_data": "back:ru" }]
+    ],
+    "help_keyboard_ru": [
+        [{ "text": "⬅️ Назад", "callback_data": "back:ru" }]
+    ],
+    "report_keyboard": [
+        [{ "text": "💌 Report", "url": "https://t.me/id160" }],
+        [{ "text": "✈️ Find out more", "url": "https://t.me/softikjs" }],
+        [{ "text": "⬅️ Back", "callback_data": "back" }]
+    ],
+    "report_keyboard_ru": [
+        [{ "text": "💌 Сообщить об ошибке", "url": "https://t.me/id160" }],
+        [{ "text": "⬅️ Назад", "callback_data": "back:ru" }]
+    ]
+}

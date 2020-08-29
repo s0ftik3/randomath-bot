@@ -1,0 +1,20 @@
+{
+  "name": "randomath_bot",
+  "version": "2.0.0",
+  "description": "Telegram bot that will help to train your math skills.",
+  "main": "app.js",
+  "repository": "https://github.com/s0ftik3/Randomath",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "author": "softik",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.19.2",
+    "mongodb": "^3.6.0",
+    "mysql": "^2.18.1",
+    "randomath": "^1.5.0",
+    "telegraf": "^3.38.0",
+    "text-to-image": "^2.3.0"
+  }
+}
