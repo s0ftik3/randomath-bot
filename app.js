@@ -70,8 +70,6 @@ bot.action('options', optionsCommand());
 bot.action('lang', optionsCommandRu());
 bot.action('achievements', achievementsCommand());
 
-bot.action(/train-*\w+/, defineTrainMode());
-
 bot.action('add', addCommand());
 bot.action('sub', subCommand());
 bot.action('mult', multCommand());
