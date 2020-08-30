@@ -6,8 +6,6 @@ const bot = new telegraf(process.env.TOKEN);
 // if they did not use the bot for a long time
 const { reminder } = require('./src/scripts');
 
-const defineTrainMode = require('./src/scripts/defineTrainMode');
-
 // English version of the bot
 const { 
     addCommand,
