@@ -28,12 +28,10 @@ const {
     wrongRu
 } = require('../training/ru');
 
-function defineTrainMode() {
+module.exports = () => (ctx) => {
     let mode = ctx.callbackQuery.data.replace(/train-/gi, '');
 
     if (mode === 'add') {
         return addCommand();
     }
 }
-
-module.exports = defineTrainMode;
