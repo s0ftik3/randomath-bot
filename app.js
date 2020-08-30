@@ -6,6 +6,8 @@ const bot = new telegraf(process.env.TOKEN);
 // if they did not use the bot for a long time
 const { reminder } = require('./src/scripts');
 
+const defineTrainMode = require('./src/scripts/defineTrainMode');
+
 // English version of the bot
 const { 
     addCommand,
@@ -68,6 +70,8 @@ bot.action('options', optionsCommand());
 bot.action('lang', optionsCommandRu());
 bot.action('achievements', achievementsCommand());
 
+bot.action(/train-*\w+/, defineTrainMode());
+
 bot.action('add', addCommand());
 bot.action('sub', subCommand());
 bot.action('mult', multCommand());
@@ -120,7 +124,7 @@ bot.telegram.getMe().then((bot) => { console.log(`${bot.first_name} bot has been
 // Checks if the reminder need to be sent or not
 setInterval(() => {
     reminder();
-}, 60000);
+}, 3600000);
 
 // Solves the problem with stucked loader next to the inline buttons
 bot.on('callback_query', ctx => ctx.answerCbQuery());
