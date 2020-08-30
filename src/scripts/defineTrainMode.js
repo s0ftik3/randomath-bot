@@ -31,6 +31,8 @@ const {
 module.exports = () => (ctx) => {
     let mode = ctx.callbackQuery.data.replace(/train_/gi, '');
 
+    console.log(mode);
+
     if (mode === 'add') {
         return addCommand();
     }
