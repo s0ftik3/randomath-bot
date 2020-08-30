@@ -29,7 +29,7 @@ const {
 } = require('../training/ru');
 
 module.exports = () => (ctx) => {
-    let mode = ctx.callbackQuery.data.replace(/train-/gi, '');
+    let mode = ctx.callbackQuery.data.replace(/train_/gi, '');
 
     if (mode === 'add') {
         return addCommand();
