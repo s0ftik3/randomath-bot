@@ -102,10 +102,40 @@ function defineLevel(trueAnswers, falseAnswers, lang = 'EN') {
             nextLevel = `❔ Complete ${numbers[481 - correct]} example(s) to reach a new level.`
         } else if (correct <= 500) {
             level = 30 + ' (😎 Professional)';
-            nextLevel = `❔ Complete ${numbers[501 - correct]} example(s) to reach the top.`
-        } else if (correct > 500) {
-            level = 30 + ' (🎓 God)';
-            nextLevel = `✅ Correct answers — ${correct}\n❌ Incorrect answers — ${incorrect}\n\n👍 You have reached the top and now you are available to see the full statistics.`
+            nextLevel = `❔ Complete ${numbers[501 - correct]} example(s) to reach a new level.`
+        } else if (correct <= 520) {
+            level = 31 + ' (👨‍🏫 Teacher)';
+            nextLevel = `❔ Complete ${numbers[521 - correct]} example(s) to reach a new level.`
+        } else if (correct <= 540) {
+            level = 32 + ' (👨‍🏫 Teacher)';
+            nextLevel = `❔ Complete ${numbers[541 - correct]} example(s) to reach a new level.`
+        } else if (correct <= 560) {
+            level = 33 + ' (👨‍🏫 Teacher)';
+            nextLevel = `❔ Complete ${numbers[561 - correct]} example(s) to reach a new level.`
+        } else if (correct <= 580) {
+            level = 34 + ' (👨‍🏫 Teacher)';
+            nextLevel = `❔ Complete ${numbers[581 - correct]} example(s) to reach a new level.`
+        } else if (correct <= 600) {
+            level = 35 + ' (👨‍🏫 Teacher)';
+            nextLevel = `❔ Complete ${numbers[601 - correct]} example(s) to reach a new level.`
+        } else if (correct <= 620) {
+            level = 36 + ' (🧑‍🔬 Scientist)';
+            nextLevel = `❔ Complete ${numbers[621 - correct]} example(s) to reach a new level.`
+        } else if (correct <= 640) {
+            level = 37 + ' (🧑‍🔬 Scientist)';
+            nextLevel = `❔ Complete ${numbers[641 - correct]} example(s) to reach a new level.`
+        } else if (correct <= 660) {
+            level = 38 + ' (🧑‍🔬 Scientist)';
+            nextLevel = `❔ Complete ${numbers[661 - correct]} example(s) to reach a new level.`
+        } else if (correct <= 680) {
+            level = 39 + ' (🧑‍🔬 Scientist)';
+            nextLevel = `❔ Complete ${numbers[681 - correct]} example(s) to reach a new level.`
+        } else if (correct <= 700) {
+            level = 40 + ' (🧑‍🔬 Scientist)';
+            nextLevel = `❔ Complete ${numbers[701 - correct]} example(s) to reach the maximum level.`
+        } else if (correct > 700) {
+            level = 40 + ' (🎓 Doctor of Science)';
+            nextLevel = `✅ Correct answers — ${correct}\n❌ Incorrect answers — ${incorrect}\n\n👍 You have reached the the maximum level and now you are available to see the full statistics.`
         }
 
         return { level, nextLevel }
@@ -207,9 +237,39 @@ function defineLevel(trueAnswers, falseAnswers, lang = 'EN') {
             nextLevel = `❔ Завершите ${numbers[481 - correct]} примеров, чтобы достичь нового уровня.`
         } else if (correct <= 500) {
             level = 30 + ' (😎 Профессионал)';
-            nextLevel = `❔ Завершите ${numbers[501 - correct]} примеров, чтобы достичь максимального уровня.`
-        } else if (correct > 500) {
-            level = 30 + ' (🎓 Бог)';
+            nextLevel = `❔ Завершите ${numbers[501 - correct]} примеров, чтобы достичь нового уровня.`
+        } else if (correct <= 520) {
+            level = 31 + ' (👨‍🏫 Учитель)';
+            nextLevel = `❔ Завершите ${numbers[521 - correct]} примеров, чтобы достичь нового уровня.`
+        } else if (correct <= 540) {
+            level = 32 + ' (👨‍🏫 Учитель)';
+            nextLevel = `❔ Завершите ${numbers[541 - correct]} примеров, чтобы достичь нового уровня.`
+        } else if (correct <= 560) {
+            level = 33 + ' (👨‍🏫 Учитель)';
+            nextLevel = `❔ Завершите ${numbers[561 - correct]} примеров, чтобы достичь нового уровня.`
+        } else if (correct <= 580) {
+            level = 34 + ' (👨‍🏫 Учитель)';
+            nextLevel = `❔ Завершите ${numbers[581 - correct]} примеров, чтобы достичь нового уровня.`
+        } else if (correct <= 600) {
+            level = 35 + ' (👨‍🏫 Учитель)';
+            nextLevel = `❔ Завершите ${numbers[601 - correct]} примеров, чтобы достичь нового уровня.`
+        } else if (correct <= 620) {
+            level = 36 + ' (🧑‍🔬 Учёный)';
+            nextLevel = `❔ Завершите ${numbers[621 - correct]} примеров, чтобы достичь нового уровня.`
+        } else if (correct <= 640) {
+            level = 37 + ' (🧑‍🔬 Учёный)';
+            nextLevel = `❔ Завершите ${numbers[641 - correct]} примеров, чтобы достичь нового уровня.`
+        } else if (correct <= 660) {
+            level = 38 + ' (🧑‍🔬 Учёный)';
+            nextLevel = `❔ Завершите ${numbers[661 - correct]} примеров, чтобы достичь нового уровня.`
+        } else if (correct <= 680) {
+            level = 39 + ' (🧑‍🔬 Учёный)';
+            nextLevel = `❔ Завершите ${numbers[681 - correct]} примеров, чтобы достичь нового уровня.`
+        } else if (correct <= 700) {
+            level = 40 + ' (🧑‍🔬 Учёный)';
+            nextLevel = `❔ Завершите ${numbers[701 - correct]} примеров, чтобы достичь максимального уровня.`
+        } else if (correct > 700) {
+            level = 40 + ' (🎓 Доктор наук)';
             nextLevel = `✅ Верных ответов — ${correct}\n❌ Неверных ответов — ${incorrect}\n\n👍 Вы достигли максимального уровня и теперь Вам доступна полная статистика о Ваших ответах.`
         }
 
