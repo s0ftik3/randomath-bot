@@ -40,18 +40,22 @@ module.exports = () => (ctx) => {
 
         let answerDataF = 'wrong1';
         let answerDataS = 'wrong2';
+        let answerDataT = 'wrong3';
 
         if (sample[0].answers[0] === trueAnswer) {
             answerDataF = 'rightComp';
         } else if (sample[0].answers[1] === trueAnswer) {
             answerDataS = 'rightComp';
+        } else if (sample[0].answers[2] === trueAnswer) {
+            answerDataT = 'rightComp';
         }
 
         await ctx.editMessageMedia({ type: 'photo', media: image})
         ctx.editMessageReplyMarkup({
             inline_keyboard: [[
                 {text: sample[0].answers[0], callback_data: answerDataF}, 
-                {text: sample[0].answers[1], callback_data: answerDataS}
+                {text: sample[0].answers[1], callback_data: answerDataS}, 
+                {text: sample[0].answers[2], callback_data: answerDataT}
             ],
             [
                 {text: '⬅️ Back', callback_data: 'back:train'}
