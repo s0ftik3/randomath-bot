@@ -28,7 +28,7 @@ module.exports = () => (ctx) => {
             let difficulty = data[0].difficulty;
 
             let sample = math.getRandomDivide(1, difficulty);
-            textToImage.generate(`\n${sample[0].example} = ?`, {
+            textToImage.generate(`\n${sample[0].example}`, {
                 maxWidth: 720,
                 fontSize: 100,
                 fontFamily: 'Helvetica',
