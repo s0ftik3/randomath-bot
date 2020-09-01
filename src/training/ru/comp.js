@@ -24,11 +24,14 @@ module.exports = () => (ctx) => {
 
         let answerDataF = 'wrong1:ru';
         let answerDataS = 'wrong2:ru';
+        let answerDataT = 'wrong3:ru';
 
         if (sample[0].answers[0] === trueAnswer) {
             answerDataF = 'rightComp:ru';
         } else if (sample[0].answers[1] === trueAnswer) {
             answerDataS = 'rightComp:ru';
+        } else if (sample[0].answers[2] === trueAnswer) {
+            answerDataT = 'rightComp:ru';
         }
 
         ctx.deleteMessage();
@@ -36,7 +39,8 @@ module.exports = () => (ctx) => {
             reply_markup: { 
                 inline_keyboard: [[
                     {text: sample[0].answers[0], callback_data: answerDataF}, 
-                    {text: sample[0].answers[1], callback_data: answerDataS}
+                    {text: sample[0].answers[1], callback_data: answerDataS}, 
+                    {text: sample[0].answers[2], callback_data: answerDataT}
                 ],
                 [
                     {text: '⬅️ Назад', callback_data: 'back:train:ru'}
