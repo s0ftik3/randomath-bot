@@ -32,6 +32,12 @@ const {
     achievementsCommand
 } = require('./src/cmds/en');
 
+const {
+    easy,
+    medium,
+    hard
+} = require('./src/helpers/en');
+
 // Russian version of the bot
 const { 
     addCommandRu,
@@ -58,6 +64,12 @@ const {
     achievementsCommandRu
 } = require('./src/cmds/ru');
 
+const {
+    easyRu,
+    mediumRu,
+    hardRu
+} = require('./src/helpers/ru');
+
 // English commands
 bot.start(startCommand());
 
@@ -65,6 +77,9 @@ bot.action('train', trainCommand());
 bot.action('help', helpCommand());
 bot.action('back', backCommand());
 bot.action('options', optionsCommand());
+bot.action('edit_0', easy());
+bot.action('edit_1', medium());
+bot.action('edit_2', hard());
 bot.action('lang', optionsCommandRu());
 bot.action('achievements', achievementsCommand());
 
@@ -92,6 +107,9 @@ bot.action('train:ru', trainCommandRu());
 bot.action('help:ru', helpCommandRu());
 bot.action('back:ru', backCommandRu());
 bot.action('options:ru', optionsCommandRu());
+bot.action('edit_0:ru', easyRu());
+bot.action('edit_1:ru', mediumRu());
+bot.action('edit_2:ru', hardRu());
 bot.action('lang:en', optionsCommand());
 bot.action('achievements:ru', achievementsCommandRu());
 

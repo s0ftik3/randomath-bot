@@ -15,6 +15,7 @@ module.exports = () => async (ctx) => {
             let incorrect = data[0].false_answers;
             let joined = data[0].timestamp;
             let lastUsed = data[0].last_time_used;
+            let difficulty = data[0].difficulty;
     
             let lvl = defineLevel(correct, incorrect);
     
@@ -36,6 +37,9 @@ module.exports = () => async (ctx) => {
             let used = lastTimeUse(lastUsed);
 
             let month = new Date(joined).getMonth() + 1;
+
+            let emoji = (difficulty === 0) ? '🤓 Easy' : (difficulty === 1) ? '🧐 Medium' : '🤯 Hard';
+            let back = (difficulty === 0) ? 'edit_0' : (difficulty === 1) ? 'edit_1' : 'edit_2';
     
             ctx.editMessageText(
                 `👤 User — *${ctx.from.first_name}*\n` +
@@ -47,6 +51,7 @@ module.exports = () => async (ctx) => {
                 reply_markup: {
                     inline_keyboard: [
                         [{ text: "🇬🇧 Language", callback_data: "lang" }],
+                        [{ text: emoji, callback_data: back }],
                         [{ text: "⬅️ Back", callback_data: "back" }]
                     ]
                 }, parse_mode: "markdown"

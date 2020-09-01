@@ -42,7 +42,8 @@ module.exports = () => async (ctx) => {
                         true_answers: 0,
                         false_answers: 0,
                         timestamp: new Date().getTime(),
-                        last_time_used: 0
+                        last_time_used: 0,
+                        difficulty: 0
                     }, (err, result) => {
                         if (err) console.error(err);
                     });

@@ -15,6 +15,7 @@ module.exports = () => async (ctx) => {
             let incorrect = data[0].false_answers;
             let joined = data[0].timestamp;
             let lastUsed = data[0].last_time_used;
+            let difficulty = data[0].difficulty;
 
             let lvl = defineLevel(correct, incorrect, 'RU');
 
@@ -37,6 +38,9 @@ module.exports = () => async (ctx) => {
 
             let month = new Date(joined).getMonth() + 1;
 
+            let emoji = (difficulty === 0) ? '🤓 Легко' : (difficulty === 1) ? '🧐 Средне' : '🤯 Тяжело';
+            let back = (difficulty === 0) ? 'edit_0:ru' : (difficulty === 1) ? 'edit_1:ru' : 'edit_2:ru';
+
             ctx.editMessageText(
                 `👤 Пользователь — *${ctx.from.first_name}*\n` +
                 `⭐️ Уровень — *${lvl.level}*\n` +
@@ -47,6 +51,7 @@ module.exports = () => async (ctx) => {
                 reply_markup: {
                     inline_keyboard: [
                         [{ text: "🇷🇺 Язык", callback_data: "lang:en" }],
+                        [{ text: emoji, callback_data: back }],
                         [{ text: "⬅️ Назад", callback_data: "back:ru" }]
                     ]
                 }, parse_mode: "markdown"
