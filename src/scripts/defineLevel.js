@@ -1,7 +1,4 @@
 const levelNums = require('../config/numbers.json');
-const mongo = require('mongodb');
-const levelEn = require('../config/level.json');
-const levelRu = require('../config/levelRu.json');
 
 function defineLevel(trueAnswers, falseAnswers, lang = 'EN') {
     let correct = trueAnswers;
@@ -11,32 +8,136 @@ function defineLevel(trueAnswers, falseAnswers, lang = 'EN') {
         let numbers = levelNums;
         let level = 0;
         let nextLevel = 'Complete 0️⃣ example(s) to reach new level.';
-
-        let isLevelUp = (trueAnswers > 0 && trueAnswers <= 100) ? ((trueAnswers % 10) === 0) : ((trueAnswers % 20) === 0);
-        let answersLeft = (trueAnswers >= 0 && trueAnswers <= 100) ? Math.abs(10 - trueAnswers.toString().split('').reverse()[0]) : Math.abs(20 - trueAnswers.toString().split('').reverse()[0]);
     
-        if (isLevelUp) {
-            mongo.connect(url, {
-                useNewUrlParser: true,
-                useUnifiedTopology: true
-            }, (err, client) => {
-                let db = client.db('randomath');
-                db.collection('users').find({ "id": ctx.from.id }).toArray((err, data) => {
-                    level = levelEn[data[0].level];
-                    nextLevel = `❔ Complete ${numbers[answersLeft]} example(s) to reach a new level.`;
-                    db.collection('users').updateOne({ "id": ctx.from.id }, { $set: { "level" : data[0].level + 1 } }, (err, result) => {
-                        if (err) return console.error(err);
-                    });
-                });
-            });
+        // Levels page. Now it's 30 levels
+        if (correct <= 0) {    
+            level = 0;
+            nextLevel = `❔ Complete at least one example to start.`
+        } else if (correct <= 10) {
+            level = 1 + ' (🤓 Beginner)';
+            nextLevel = `❔ Complete ${numbers[11 - correct]} example(s) to reach a new level.`
+        } else if (correct <= 20) {
+            level = 2 + ' (🤓 Beginner)';
+            nextLevel = `❔ Complete ${numbers[21 - correct]} example(s) to reach a new level.`
+        } else if (correct <= 30) {
+            level = 3 + ' (🤓 Beginner)';
+            nextLevel = `❔ Complete ${numbers[31 - correct]} example(s) to reach a new level.`
+        } else if (correct <= 40) {
+            level = 4 + ' (🤨 Amateur)';
+            nextLevel = `❔ Complete ${numbers[41 - correct]} example(s) to reach a new level.`
+        } else if (correct <= 50) {
+            level = 5 + ' (🤨 Amateur)';
+            nextLevel = `❔ Complete ${numbers[51 - correct]} example(s) to reach a new level.`
+        } else if (correct <= 60) {
+            level = 6 + ' (🤨 Amateur)';
+            nextLevel = `❔ Complete ${numbers[61 - correct]} example(s) to reach a new level.`
+        } else if (correct <= 70) {
+            level = 7 + ' (🤨 Amateur)';
+            nextLevel = `❔ Complete ${numbers[71 - correct]} example(s) to reach a new level.`
+        } else if (correct <= 80) {
+            level = 8 + ' (🧐 Bookkeeper)';
+            nextLevel = `❔ Complete ${numbers[81 - correct]} example(s) to reach a new level.`
+        } else if (correct <= 90) {
+            level = 9 + ' (🧐 Bookkeeper)';
+            nextLevel = `❔ Complete ${numbers[91 - correct]} example(s) to reach a new level.`
+        } else if (correct <= 100) {
+            level = 10 + ' (🧐 Bookkeeper)';
+            nextLevel = `❔ Complete ${numbers[101 - correct]} example(s) to reach a new level.`
+        } else if (correct <= 120) {
+            level = 11 + ' (🧐 Bookkeeper)';
+            nextLevel = `❔ Complete ${numbers[121 - correct]} example(s) to reach a new level.`
+        } else if (correct <= 140) {
+            level = 12 + ' (🧐 Bookkeeper)';
+            nextLevel = `❔ Complete ${numbers[141 - correct]} example(s) to reach a new level.`
+        } else if (correct <= 160) {
+            level = 13 + ' (🧐 Bookkeeper)';
+            nextLevel = `❔ Complete ${numbers[161 - correct]} example(s) to reach a new level.`
+        } else if (correct <= 180) {
+            level = 14 + ' (🧐 Bookkeeper)';
+            nextLevel = `❔ Complete ${numbers[181 - correct]} example(s) to reach a new level.`
+        } else if (correct <= 200) {
+            level = 15 + ' (🧐 Bookkeeper)';
+            nextLevel = `❔ Complete ${numbers[201 - correct]} example(s) to reach a new level.`
+        } else if (correct <= 220) {
+            level = 16 + ' (🤔 Expert)';
+            nextLevel = `❔ Complete ${numbers[221 - correct]} example(s) to reach a new level.`
+        } else if (correct <= 240) {
+            level = 17 + ' (🤔 Expert)';
+            nextLevel = `❔ Complete ${numbers[241 - correct]} example(s) to reach a new level.`
+        } else if (correct <= 260) {
+            level = 18 + ' (🤔 Expert)';
+            nextLevel = `❔ Complete ${numbers[261 - correct]} example(s) to reach a new level.`
+        } else if (correct <= 280) {
+            level = 19 + ' (🤔 Expert)';
+            nextLevel = `❔ Complete ${numbers[281 - correct]} example(s) to reach a new level.`
+        } else if (correct <= 300) {
+            level = 20 + ' (🤔 Expert)';
+            nextLevel = `❔ Complete ${numbers[301 - correct]} example(s) to reach a new level.`
+        } else if (correct <= 320) {
+            level = 21 + ' (😏 Veteran)';
+            nextLevel = `❔ Complete ${numbers[321 - correct]} example(s) to reach a new level.`
+        } else if (correct <= 340) {
+            level = 22 + ' (😏 Veteran)';
+            nextLevel = `❔ Complete ${numbers[341 - correct]} example(s) to reach a new level.`
+        } else if (correct <= 360) {
+            level = 23 + ' (😏 Veteran)';
+            nextLevel = `❔ Complete ${numbers[361 - correct]} example(s) to reach a new level.`
+        } else if (correct <= 380) {
+            level = 24 + ' (🤠 Semi-Pro)';
+            nextLevel = `❔ Complete ${numbers[381 - correct]} example(s) to reach a new level.`
+        } else if (correct <= 400) {
+            level = 25 + ' (🤠 Semi-Pro)';
+            nextLevel = `❔ Complete ${numbers[401 - correct]} example(s) to reach a new level.`
+        } else if (correct <= 420) {
+            level = 26 + ' (😎 Professional)';
+            nextLevel = `❔ Complete ${numbers[421 - correct]} example(s) to reach a new level.`
+        } else if (correct <= 440) {
+            level = 27 + ' (😎 Professional)';
+            nextLevel = `❔ Complete ${numbers[441 - correct]} example(s) to reach a new level.`
+        } else if (correct <= 460) {
+            level = 28 + ' (😎 Professional)';
+            nextLevel = `❔ Complete ${numbers[461 - correct]} example(s) to reach a new level.`
+        } else if (correct <= 480) {
+            level = 29 + ' (😎 Professional)';
+            nextLevel = `❔ Complete ${numbers[481 - correct]} example(s) to reach a new level.`
+        } else if (correct <= 500) {
+            level = 30 + ' (😎 Professional)';
+            nextLevel = `❔ Complete ${numbers[501 - correct]} example(s) to reach a new level.`
+        } else if (correct <= 520) {
+            level = 31 + ' (👨‍🏫 Teacher)';
+            nextLevel = `❔ Complete ${numbers[521 - correct]} example(s) to reach a new level.`
+        } else if (correct <= 540) {
+            level = 32 + ' (👨‍🏫 Teacher)';
+            nextLevel = `❔ Complete ${numbers[541 - correct]} example(s) to reach a new level.`
+        } else if (correct <= 560) {
+            level = 33 + ' (👨‍🏫 Teacher)';
+            nextLevel = `❔ Complete ${numbers[561 - correct]} example(s) to reach a new level.`
+        } else if (correct <= 580) {
+            level = 34 + ' (👨‍🏫 Teacher)';
+            nextLevel = `❔ Complete ${numbers[581 - correct]} example(s) to reach a new level.`
+        } else if (correct <= 600) {
+            level = 35 + ' (👨‍🏫 Teacher)';
+            nextLevel = `❔ Complete ${numbers[601 - correct]} example(s) to reach a new level.`
+        } else if (correct <= 620) {
+            level = 36 + ' (🧑‍🔬 Scientist)';
+            nextLevel = `❔ Complete ${numbers[621 - correct]} example(s) to reach a new level.`
+        } else if (correct <= 640) {
+            level = 37 + ' (🧑‍🔬 Scientist)';
+            nextLevel = `❔ Complete ${numbers[641 - correct]} example(s) to reach a new level.`
+        } else if (correct <= 660) {
+            level = 38 + ' (🧑‍🔬 Scientist)';
+            nextLevel = `❔ Complete ${numbers[661 - correct]} example(s) to reach a new level.`
+        } else if (correct <= 680) {
+            level = 39 + ' (🧑‍🔬 Scientist)';
+            nextLevel = `❔ Complete ${numbers[681 - correct]} example(s) to reach a new level.`
+        } else if (correct <= 700) {
+            level = 40 + ' (🧑‍🔬 Scientist)';
+            nextLevel = `❔ Complete ${numbers[701 - correct]} example(s) to reach the maximum level.`
+        } else if (correct > 700) {
+            level = 40 + ' (🎓 Doctor of Science)';
+            nextLevel = `✅ Correct answers — ${correct}\n❌ Incorrect answers — ${incorrect}\n\n👍 You have reached the the maximum level and now you are available to see the full statistics.`
         }
 
-        if (correct > 700) {
-            level = '50 (🎓 Doctor of Science)';
-            nextLevel = `✅ Correct answers — ${correct}\n❌ Incorrect answers — ${incorrect}\n\n👍 You have reached the the maximum level and now you are available to see the full statistics.`;
-        }
-
-        console.log(level, nextLevel);
         return { level, nextLevel }
     } else if (lang === 'RU') {
         let numbers = levelNums;
