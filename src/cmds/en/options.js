@@ -1,6 +1,6 @@
 const config = require('../../config');
 const levelEn = require('../../config/level.json');
-const levelNums = require('../config/numbers.json');
+const levelNums = require('../../config/numbers.json');
 const lastTimeUse = require('../../scripts/lastTimeUse');
 const defineLevel = require('../../scripts/defineLevel');
 const mongo = require('mongodb');
