@@ -33,7 +33,7 @@ function defineLevel(trueAnswers, falseAnswers, lang = 'EN') {
 
         if (correct > 700) {
             level = '50 (🎓 Doctor of Science)';
-            nextLevel = '✅ Correct answers — ${correct}\n❌ Incorrect answers — ${incorrect}\n\n👍 You have reached the the maximum level and now you are available to see the full statistics.';
+            nextLevel = `✅ Correct answers — ${correct}\n❌ Incorrect answers — ${incorrect}\n\n👍 You have reached the the maximum level and now you are available to see the full statistics.`;
         }
 
         console.log(level, nextLevel);
