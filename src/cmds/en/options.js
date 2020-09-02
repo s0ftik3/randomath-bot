@@ -38,7 +38,6 @@ module.exports = () => async (ctx) => {
                         if (err) return console.error(err);
                     });
                 });
-                client.close();
             });
 
             let used = lastTimeUse(lastUsed);
