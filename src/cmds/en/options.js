@@ -109,7 +109,7 @@ module.exports = () => async (ctx) => {
         
                 ctx.editMessageText(
                     `👤 User — *${ctx.from.first_name}*\n` +
-                    `⭐️ Level — *${lvl.level}*\n` +
+                    `⭐️ Level — *${xplevel} ${lvl.level}*\n` +
                     `👋 Joined — *${new Date(joined).getDate().toString().padStart(2, "0")}.${month.toString().padStart(2, "0")}.${new Date(joined).getFullYear()}*\n` +
                     `🧠 Last time trained — *${used}*\n` +
                     `🧨 Mistakes — *${falsePercent}%*\n\n` +
