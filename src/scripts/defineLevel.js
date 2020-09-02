@@ -1,8 +1,14 @@
 const levelNums = require('../config/numbers.json');
 
-function defineLevel(trueAnswers, falseAnswers, lang = 'EN') {
+function defineLevel(trueAnswers, falseAnswers, addition, subtraction, multiplication, division, comparison, lang = 'EN') {
     let correct = trueAnswers;
     let incorrect = falseAnswers;
+
+    let _addition = addition;
+    let _subtraction = subtraction;
+    let _multiplication = multiplication;
+    let _division = division;
+    let _comparison = comparison;
 
     if (lang === 'EN') {
         let numbers = levelNums;
@@ -135,7 +141,7 @@ function defineLevel(trueAnswers, falseAnswers, lang = 'EN') {
             nextLevel = `❔ Complete ${numbers[701 - correct]} example(s) to reach the maximum level.`
         } else if (correct > 700) {
             level = 40 + ' (🎓 Doctor of Science)';
-            nextLevel = `✅ Correct answers — ${correct}\n❌ Incorrect answers — ${incorrect}\n\n👍 You have reached the the maximum level and now you are available to see the full statistics.`
+            nextLevel = `✅ Correct answers — ${correct}\n➕ Addition — ${_addition}\n➖ Subtraction — ${_subtraction}\n✖️ Multiplication — ${_multiplication}\n➗ Division — ${_division}\n⚖️ Comparison — ${_comparison}\n❌ Incorrect answers — ${incorrect}\n\n👍 You have reached the the maximum level and now you are available to see the full statistics.`
         }
 
         return { level, nextLevel }
@@ -270,7 +276,7 @@ function defineLevel(trueAnswers, falseAnswers, lang = 'EN') {
             nextLevel = `❔ Завершите ${numbers[701 - correct]} примеров, чтобы достичь максимального уровня.`
         } else if (correct > 700) {
             level = 40 + ' (🎓 Доктор наук)';
-            nextLevel = `✅ Верных ответов — ${correct}\n❌ Неверных ответов — ${incorrect}\n\n👍 Вы достигли максимального уровня и теперь Вам доступна полная статистика о Ваших ответах.`
+            nextLevel = `✅ Верных ответов — ${correct}\n➕ Сложение — ${_addition}\n➖ Вычитание — ${_subtraction}\n✖️ Умножение — ${_multiplication}\n➗ Деление — ${_division}\n⚖️ Сравнение — ${_comparison}\n❌ Неверных ответов — ${incorrect}\n\n👍 Вы достигли максимального уровня и теперь Вам доступна полная статистика о Ваших ответах.`
         }
 
         return { level, nextLevel }

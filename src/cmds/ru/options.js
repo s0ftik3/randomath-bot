@@ -17,7 +17,13 @@ module.exports = () => async (ctx) => {
             let lastUsed = data[0].last_time_used;
             let difficulty = data[0].difficulty;
 
-            let lvl = defineLevel(correct, incorrect, 'RU');
+            let addition = data[0].addition;
+            let subtraction = data[0].subtraction;
+            let multiplication = data[0].multiplication;
+            let division = data[0].division;
+            let comparison = data[0].comparison;
+
+            let lvl = defineLevel(correct, incorrect, addition, subtraction, multiplication, division, comparison, 'RU');
 
             let falsePercent = 0;
             incorrect !== 0 ? falsePercent = Math.round((incorrect / (correct + incorrect)) * 100) : falsePercent = falsePercent;
@@ -46,6 +52,7 @@ module.exports = () => async (ctx) => {
                 `⭐️ Уровень — *${lvl.level}*\n` +
                 `👋 Присоединился — *${new Date(joined).getDate().toString().padStart(2, "0")}.${month.toString().padStart(2, "0")}.${new Date(joined).getFullYear()}*\n` +
                 `🧠 Последняя тренировка — *${used}*\n` +
+                `💪 Сложность — ${emoji}\n`
                 `🧨 Ошибок — *${falsePercent}%*\n\n` +
                 `*${lvl.nextLevel}*`, {
                 reply_markup: {
