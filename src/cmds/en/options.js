@@ -32,7 +32,7 @@ module.exports = () => async (ctx) => {
                     let db = client.db('randomath');
                     db.collection('users').find({ "id": ctx.from.id }).toArray((err, data) => {
                         let lvl = {
-                            level: `${xplevel} ${levelEn[data[0].level]}`,
+                            level: `${levelEn[data[0].level]}`,
                             nextLevel: `❔ Complete ${numbers[answersLeft]} example(s) to reach a new level.`
                         }
                 
@@ -60,7 +60,7 @@ module.exports = () => async (ctx) => {
                 
                         ctx.editMessageText(
                             `👤 User — *${ctx.from.first_name}*\n` +
-                            `⭐️ Level — *${lvl.level}*\n` +
+                            `⭐️ Level — *${xplevel} ${lvl.level}*\n` +
                             `👋 Joined — *${new Date(joined).getDate().toString().padStart(2, "0")}.${month.toString().padStart(2, "0")}.${new Date(joined).getFullYear()}*\n` +
                             `🧠 Last time trained — *${used}*\n` +
                             `🧨 Mistakes — *${falsePercent}%*\n\n` +
