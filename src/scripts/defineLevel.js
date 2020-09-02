@@ -177,10 +177,3 @@ function defineLevel(trueAnswers, falseAnswers, lang = 'EN') {
 }
 
 module.exports = defineLevel;
-
-function defineLevel(xp) {
-    return {
-        isLevelUp: (xp > 0 && xp <= 100) ? ((xp % 10) === 0) : ((xp % 20) === 0),
-        answersLeft: (xp >= 0 && xp <= 100) ? Math.abs(10 - xp.toString().split('').reverse()[0]) : Math.abs(20 - xp.toString().split('').reverse()[0])
-    }
-}
