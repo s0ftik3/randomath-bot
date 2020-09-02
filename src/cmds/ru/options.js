@@ -52,7 +52,7 @@ module.exports = () => async (ctx) => {
                 `⭐️ Уровень — *${lvl.level}*\n` +
                 `👋 Присоединился — *${new Date(joined).getDate().toString().padStart(2, "0")}.${month.toString().padStart(2, "0")}.${new Date(joined).getFullYear()}*\n` +
                 `🧠 Последняя тренировка — *${used}*\n` +
-                `💪 Сложность — ${emoji}\n`
+                `💪 Сложность — ${emoji}\n` +
                 `🧨 Ошибок — *${falsePercent}%*\n\n` +
                 `*${lvl.nextLevel}*`, {
                 reply_markup: {
