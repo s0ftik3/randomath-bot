@@ -21,6 +21,8 @@ module.exports = () => async (ctx) => {
             let isLevelUp = (correct > 0 && correct <= 100) ? ((correct % 10) === 0) : ((correct % 20) === 0);
             let answersLeft = (correct >= 0 && correct <= 100) ? Math.abs(10 - correct.toString().split('').reverse()[0]) : Math.abs(20 - correct.toString().split('').reverse()[0]);
             let numbers = levelNums;
+            let xplevel = data[0].level;
+            console.log(xplevel);
     
             if (isLevelUp) {
                 mongo.connect(url, {
@@ -30,7 +32,7 @@ module.exports = () => async (ctx) => {
                     let db = client.db('randomath');
                     db.collection('users').find({ "id": ctx.from.id }).toArray((err, data) => {
                         let lvl = {
-                            level: data[0].level + ' ' + levelEn[data[0].level],
+                            level: xplevel + ' ' + levelEn[data[0].level],
                             nextLevel: `❔ Complete ${numbers[answersLeft]} example(s) to reach a new level.`
                         }
                 
