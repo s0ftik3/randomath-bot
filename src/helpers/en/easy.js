@@ -16,10 +16,9 @@ module.exports = () => async (ctx) => {
 
     ctx.editMessageReplyMarkup({
         inline_keyboard: [
-            [{ text: "🇬🇧 Language", callback_data: "lang" }],
-            [{ text: '🧐 Medium', callback_data: 'edit_1' }],
+            [{ text: "🇬🇧 Language", callback_data: "lang" }, { text: '🧐 Medium', callback_data: 'edit_1' }],
             [{ text: "⬅️ Back", callback_data: "back" }]
         ]
     });
-    ctx.answerCbQuery();
+    ctx.answerCbQuery('✅ The difficulty has been changed.');
 }

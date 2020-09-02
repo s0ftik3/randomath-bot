@@ -16,10 +16,9 @@ module.exports = () => async (ctx) => {
 
     ctx.editMessageReplyMarkup({
         inline_keyboard: [
-            [{ text: "🇷🇺 Язык", callback_data: "lang:en" }],
-            [{ text: '🤯 Тяжело', callback_data: 'edit_2:ru' }],
+            [{ text: "🇷🇺 Язык", callback_data: "lang:en" }, { text: '🤯 Тяжело', callback_data: 'edit_2:ru' }],
             [{ text: "⬅️ Назад", callback_data: "back:ru" }]
         ]
     });
-    ctx.answerCbQuery();
+    ctx.answerCbQuery('✅ Сложность изменена.');
 }
