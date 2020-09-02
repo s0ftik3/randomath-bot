@@ -32,7 +32,7 @@ module.exports = () => async (ctx) => {
                     let db = client.db('randomath');
                     db.collection('users').find({ "id": ctx.from.id }).toArray((err, data) => {
                         let lvl = {
-                            level: xplevel + ' ' + levelEn[data[0].level],
+                            level: `${xplevel} ${levelEn[data[0].level]}`,
                             nextLevel: `❔ Complete ${numbers[answersLeft]} example(s) to reach a new level.`
                         }
                 
