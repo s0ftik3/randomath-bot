@@ -1,6 +1,6 @@
 const levelNums = require('../config/numbers.json');
 const mongo = require('mongodb');
-const level = require('../config/level.json');
+const levelEn = require('../config/level.json');
 const levelRu = require('../config/levelRu.json');
 
 function defineLevel(trueAnswers, falseAnswers, lang = 'EN') {
@@ -22,7 +22,7 @@ function defineLevel(trueAnswers, falseAnswers, lang = 'EN') {
             }, (err, client) => {
                 let db = client.db('randomath');
                 db.collection('users').find({ "id": ctx.from.id }).toArray((err, data) => {
-                    level = level[data[0].level];
+                    level = levelEn[data[0].level];
                     nextLevel = `❔ Complete ${numbers[answersLeft]} example(s) to reach a new level.`;
                     db.collection('users').updateOne({ "id": ctx.from.id }, { $set: { "level" : data[0].level + 1 } }, (err, result) => {
                         if (err) return console.error(err);
