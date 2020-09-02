@@ -4,7 +4,7 @@ const defineLevel = require('../../scripts/defineLevel');
 const mongo = require('mongodb');
 const url = process.env.MONGO;
 
-module.exports = () => (ctx) => {
+module.exports = () => async (ctx) => {
     mongo.connect(url, {
         useNewUrlParser: true,
         useUnifiedTopology: true

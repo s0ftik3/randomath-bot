@@ -13,7 +13,6 @@ module.exports = () => (ctx) => {
                 if (err) return console.error(err);
             });
         });
-        client.close();
     });
 
     ctx.answerCbQuery('❌ Incorrect! Try again.');

@@ -61,6 +61,5 @@ module.exports = () => (ctx) => {
             });
             ctx.answerCbQuery();
         })
-        client.close();
     })
 }

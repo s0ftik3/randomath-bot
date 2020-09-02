@@ -32,7 +32,6 @@ module.exports = () => async (ctx) => {
                 }, parse_mode: "markdown"
             })
             ctx.answerCbQuery();
-        }); 
-        client.close();   
+        });    
     });
 }

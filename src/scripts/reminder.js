@@ -34,7 +34,6 @@ function remind() {
                                         if (err) return console.error(err);
                                     });
                                 });
-                                client.close();
                             });
 
                             if (lang === 'EN') {
@@ -55,12 +54,10 @@ function remind() {
                                 });
                             };
                         });
-                        client.close();
                     });
                 };
             };
         });
-        client.close();
     });
 }
 

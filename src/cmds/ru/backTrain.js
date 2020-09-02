@@ -28,6 +28,5 @@ module.exports = () => async (ctx) => {
                 }, parse_mode: "markdown"
             })
         })
-        client.close();
     })
 }
