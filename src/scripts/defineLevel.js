@@ -141,7 +141,7 @@ function defineLevel(trueAnswers, falseAnswers, addition, subtraction, multiplic
             nextLevel = `❔ Complete ${numbers[701 - correct]} example(s) to reach the maximum level.`
         } else if (correct > 700) {
             level = 40 + ' (🎓 Doctor of Science)';
-            nextLevel = `➕ Addition — ${_addition}\n➖ Subtraction — ${_subtraction}\n✖️ Multiplication — ${_multiplication}\n➗ Division — ${_division}\n⚖️ Comparison — ${_comparison}\n✅ Correct answers — ${correct}\n❌ Incorrect answers — ${incorrect}\n\n👍 You have reached the the maximum level and now you are available to see the full statistics.`
+            nextLevel = `➕ Addition — ${_addition}\n➖ Subtraction — ${_subtraction}\n✖️ Multiplication — ${_multiplication}\n➗ Division — ${_division}\n⚖️ Comparison — ${_comparison}\n\n✅ Correct answers — ${correct}\n❌ Incorrect answers — ${incorrect}\n\n👍 You have reached the the maximum level and now you are available to see the full statistics.`
         }
 
         return { level, nextLevel }
@@ -276,7 +276,7 @@ function defineLevel(trueAnswers, falseAnswers, addition, subtraction, multiplic
             nextLevel = `❔ Завершите ${numbers[701 - correct]} примеров, чтобы достичь максимального уровня.`
         } else if (correct > 700) {
             level = 40 + ' (🎓 Доктор наук)';
-            nextLevel = `➕ Сложение — ${_addition}\n➖ Вычитание — ${_subtraction}\n✖️ Умножение — ${_multiplication}\n➗ Деление — ${_division}\n⚖️ Сравнение — ${_comparison}\n✅ Верных ответов — ${correct}\n❌ Неверных ответов — ${incorrect}\n\n👍 Вы достигли максимального уровня и теперь Вам доступна полная статистика о Ваших ответах.`
+            nextLevel = `➕ Сложение — ${_addition}\n➖ Вычитание — ${_subtraction}\n✖️ Умножение — ${_multiplication}\n➗ Деление — ${_division}\n⚖️ Сравнение — ${_comparison}\n\n✅ Верных ответов — ${correct}\n❌ Неверных ответов — ${incorrect}\n\n👍 Вы достигли максимального уровня и теперь Вам доступна полная статистика о Ваших ответах.`
         }
 
         return { level, nextLevel }
