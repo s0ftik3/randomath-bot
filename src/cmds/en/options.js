@@ -1,5 +1,7 @@
 const config = require('../../config');
 const lastTimeUse = require('../../scripts/lastTimeUse');
+const levelNums = require('../../config/numbers.json');
+const levelEn = require('../../config/level.json');
 const defineLevel = require('../../scripts/defineLevel');
 const mongo = require('mongodb');
 const url = process.env.MONGO;
@@ -16,8 +18,26 @@ module.exports = () => async (ctx) => {
             let joined = data[0].timestamp;
             let lastUsed = data[0].last_time_used;
             let difficulty = data[0].difficulty;
+            let level = levelEn[data[0].level];
     
-            let lvl = defineLevel(correct, incorrect);
+            let _data = defineLevel(correct);
+
+            let numbers = levelNums;
+            let nextLevel = `Complete ${numbers[_data.answersLeft]} example(s) to reach new level.`;
+
+            if (_data.isLevelUp) {
+                mongo.connect(url, {
+                    useNewUrlParser: true,
+                    useUnifiedTopology: true
+                }, (err, client) => {
+                    let db = client.db('randomath');
+                    db.collection('users').find({ "id": ctx.from.id }).toArray((err, data) => {
+                        db.collection('users').updateOne({ "id": ctx.from.id }, { $set: { "level" : data[0].level + 1, } }, (err, result) => {
+                            if (err) return console.error(err);
+                        });
+                    });
+                });
+            }
     
             let falsePercent = 0;
             incorrect !== 0 ? falsePercent = Math.round((incorrect / (correct + incorrect)) * 100) : falsePercent = falsePercent; 
@@ -43,11 +63,11 @@ module.exports = () => async (ctx) => {
     
             ctx.editMessageText(
                 `👤 User — *${ctx.from.first_name}*\n` +
-                `⭐️ Level — *${lvl.level}*\n` +
+                `⭐️ Level — *${level}*\n` +
                 `👋 Joined — *${new Date(joined).getDate().toString().padStart(2, "0")}.${month.toString().padStart(2, "0")}.${new Date(joined).getFullYear()}*\n` +
                 `🧠 Last time trained — *${used}*\n` +
                 `🧨 Mistakes — *${falsePercent}%*\n\n` +
-                `*${lvl.nextLevel}*`, {
+                `*${nextLevel}*`, {
                 reply_markup: {
                     inline_keyboard: [
                         [{ text: "🇬🇧 Language", callback_data: "lang" }],
