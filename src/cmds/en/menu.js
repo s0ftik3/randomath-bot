@@ -38,6 +38,7 @@ module.exports = () => async (ctx) => {
                     db.collection('users').insertOne({
                         id: ctx.from.id,
                         name: ctx.from.first_name,
+                        level: 0,
                         lang: "EN",
                         true_answers: 0,
                         false_answers: 0,
