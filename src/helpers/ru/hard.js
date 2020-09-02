@@ -12,6 +12,7 @@ module.exports = () => async (ctx) => {
                 if (err) return console.error(err);
             });
         });
+        client.close();
     });
 
     ctx.editMessageReplyMarkup({

@@ -17,6 +17,7 @@ module.exports = () => (ctx) => {
                 if (err) return console.error(err);
             });
         });
+        client.close();
     });
 
     mongo.connect(url, {
@@ -73,5 +74,6 @@ module.exports = () => (ctx) => {
             });
             ctx.answerCbQuery('✅ Верно!');
         })
+        client.close();
     })
 }

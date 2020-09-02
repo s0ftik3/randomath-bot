@@ -38,6 +38,7 @@ module.exports = () => async (ctx) => {
                         if (err) return console.error(err);
                     });
                 });
+                client.close();
             });
 
             let used = lastTimeUse(lastUsed);
@@ -64,5 +65,6 @@ module.exports = () => async (ctx) => {
             })
             ctx.answerCbQuery();
         })
+        client.close();
     })
 }

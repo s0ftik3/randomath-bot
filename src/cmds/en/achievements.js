@@ -33,5 +33,6 @@ module.exports = () => async (ctx) => {
             })
             ctx.answerCbQuery();
         });
+        client.close();
     });
 }
