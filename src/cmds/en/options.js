@@ -17,8 +17,8 @@ module.exports = () => async (ctx) => {
             let joined = data[0].timestamp;
             let lastUsed = data[0].last_time_used;
             let difficulty = data[0].difficulty;
-            let isLevelUp = (trueAnswers > 0 && trueAnswers <= 100) ? ((trueAnswers % 10) === 0) : ((trueAnswers % 20) === 0);
-            let answersLeft = (trueAnswers >= 0 && trueAnswers <= 100) ? Math.abs(10 - trueAnswers.toString().split('').reverse()[0]) : Math.abs(20 - trueAnswers.toString().split('').reverse()[0]);
+            let isLevelUp = (correct > 0 && correct <= 100) ? ((correct % 10) === 0) : ((correct % 20) === 0);
+            let answersLeft = (correct >= 0 && correct <= 100) ? Math.abs(10 - correct.toString().split('').reverse()[0]) : Math.abs(20 - correct.toString().split('').reverse()[0]);
     
             if (isLevelUp) {
                 mongo.connect(url, {
