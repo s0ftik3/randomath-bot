@@ -13,7 +13,7 @@ module.exports = () => (ctx) => {
     }, (err, client) => {
         let db = client.db('randomath');
         db.collection('users').find({ "id": ctx.from.id }).toArray((err, data) => {
-            db.collection('users').updateOne({ "id": ctx.from.id }, { $set: { "true_answers" : data[0].true_answers + 1, "last_time_used": new Date().getTime() } }, (err, result) => {
+            db.collection('users').updateOne({ "id": ctx.from.id }, { $set: { "true_answers": data[0].true_answers + 1, "last_time_used": new Date().getTime(), "addition": data[0].addition + 1 } }, (err, result) => {
                 if (err) return console.error(err);
             });
         });

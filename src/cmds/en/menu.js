@@ -38,13 +38,17 @@ module.exports = () => async (ctx) => {
                     db.collection('users').insertOne({
                         id: ctx.from.id,
                         name: ctx.from.first_name,
-                        level: 0,
                         lang: "EN",
                         true_answers: 0,
                         false_answers: 0,
                         timestamp: new Date().getTime(),
                         last_time_used: 0,
-                        difficulty: 0
+                        difficulty: 0,
+                        addition: 0,
+                        subtraction: 0,
+                        multiplication: 0,
+                        division: 0,
+                        comparison: 0
                     }, (err, result) => {
                         if (err) console.error(err);
                     });

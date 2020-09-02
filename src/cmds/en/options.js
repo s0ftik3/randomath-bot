@@ -50,8 +50,7 @@ module.exports = () => async (ctx) => {
                 `*${lvl.nextLevel}*`, {
                 reply_markup: {
                     inline_keyboard: [
-                        [{ text: "🇬🇧 Language", callback_data: "lang" }],
-                        [{ text: emoji, callback_data: back }],
+                        [{ text: "🇬🇧 Language", callback_data: "lang" }, { text: emoji, callback_data: back }],
                         [{ text: "⬅️ Back", callback_data: "back" }]
                     ]
                 }, parse_mode: "markdown"
