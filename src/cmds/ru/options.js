@@ -3,7 +3,6 @@ const defineLevel = require('../../scripts/defineLevel');
 const mongo = require('mongodb');
 const moment = require('moment');
 const url = process.env.MONGO;
-moment.locale('ru');
 
 module.exports = () => async (ctx) => {
     mongo.connect(url, {
@@ -45,6 +44,8 @@ module.exports = () => async (ctx) => {
 
             let emoji = (difficulty === 0) ? '🤓 Легко' : (difficulty === 1) ? '🧐 Средне' : '🤯 Тяжело';
             let back = (difficulty === 0) ? 'edit_0:ru' : (difficulty === 1) ? 'edit_1:ru' : 'edit_2:ru';
+            
+            moment.locale('ru');
 
             ctx.editMessageText(
                 `👤 Пользователь — *${ctx.from.first_name}*\n` +
