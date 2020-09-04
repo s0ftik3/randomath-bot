@@ -16,7 +16,7 @@ module.exports = () => async (ctx) => {
 
             console.log(isInStreak);
 
-            if (isInStreak && data[0].studyToday) {
+            if (isInStreak && data[0].studyToday === false) {
                 mongo.connect(url, {
                     useNewUrlParser: true,
                     useUnifiedTopology: true
@@ -29,17 +29,21 @@ module.exports = () => async (ctx) => {
                     });
                 });
             } else {
-                mongo.connect(url, {
-                    useNewUrlParser: true,
-                    useUnifiedTopology: true
-                }, (err, client) => {
-                    let db = client.db('randomath');
-                    db.collection('users').find({ "id": ctx.from.id }).toArray((err, data) => {
-                        db.collection('users').updateOne({ "id": ctx.from.id }, { $set: { "streak" : 0, "studyToday" : false } }, (err, result) => {
-                            if (err) return console.error(err);
+                if ((new Date().getDate() - new Date(data[0].last_time_used).getDate()) >= 2) {
+                    mongo.connect(url, {
+                        useNewUrlParser: true,
+                        useUnifiedTopology: true
+                    }, (err, client) => {
+                        let db = client.db('randomath');
+                        db.collection('users').find({ "id": ctx.from.id }).toArray((err, data) => {
+                            db.collection('users').updateOne({ "id": ctx.from.id }, { $set: { "streak" : 0, "studyToday" : false } }, (err, result) => {
+                                if (err) return console.error(err);
+                            });
                         });
                     });
-                });
+                } else {
+                    return data[0].streak = data[0].streak;
+                }
             }
 
             let correct = data[0].true_answers;
