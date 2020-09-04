@@ -1,7 +1,7 @@
 const config = require('../../config');
-const lastTimeUse = require('../../scripts/lastTimeUse');
 const defineLevel = require('../../scripts/defineLevel');
 const mongo = require('mongodb');
+const moment = require('moment');
 const url = process.env.MONGO;
 
 module.exports = () => async (ctx) => {
@@ -40,8 +40,6 @@ module.exports = () => async (ctx) => {
                 });
             });
 
-            let used = lastTimeUse(lastUsed);
-
             let month = new Date(joined).getMonth() + 1;
 
             let emoji = (difficulty === 0) ? '🤓 Easy' : (difficulty === 1) ? '🧐 Medium' : '🤯 Hard';
@@ -51,7 +49,7 @@ module.exports = () => async (ctx) => {
                 `👤 User — *${ctx.from.first_name}*\n` +
                 `⭐️ Level — *${lvl.level}*\n` +
                 `👋 Joined — *${new Date(joined).getDate().toString().padStart(2, "0")}.${month.toString().padStart(2, "0")}.${new Date(joined).getFullYear()}*\n` +
-                `🧠 Last time trained — *${used}*\n` +
+                `🧠 Last time trained — *${moment(lastUsed).fromNow()}*\n` +
                 `💪 Difficulty — ${emoji}\n` +
                 `🧨 Mistakes — *${falsePercent}%*\n\n` +
                 `*${lvl.nextLevel}*`, {
