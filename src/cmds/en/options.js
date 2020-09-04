@@ -12,11 +12,11 @@ module.exports = () => async (ctx) => {
     }, (err, client) => {
         let db = client.db('randomath');
         db.collection('users').find({ "id": ctx.from.id }).toArray((err, data) => {
-            let isInStrake = inStreak(data[0].last_time_used);
+            let isInStreak = inStreak(data[0].last_time_used);
 
-            console.log(isInStrake);
+            console.log(isInStreak);
 
-            if (isInStrake && !data[0].studyToday) {
+            if (isInStreak && !data[0].studyToday) {
                 mongo.connect(url, {
                     useNewUrlParser: true,
                     useUnifiedTopology: true
