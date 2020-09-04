@@ -14,6 +14,8 @@ module.exports = () => async (ctx) => {
         db.collection('users').find({ "id": ctx.from.id }).toArray((err, data) => {
             let isInStrake = inStreak(data[0].last_time_used);
 
+            console.log(isInStrake);
+
             if (isInStrake && !data[0].studyToday) {
                 mongo.connect(url, {
                     useNewUrlParser: true,
@@ -79,7 +81,7 @@ module.exports = () => async (ctx) => {
             ctx.editMessageText(
                 `👤 User — *${ctx.from.first_name}*\n` +
                 `⭐️ Level — *${lvl.level}*\n` +
-                `🔥 Streak — *${lvl}*` +
+                `🔥 Streak — *${data[0].streak}*\n` +
                 `👋 Joined — *${new Date(joined).getDate().toString().padStart(2, "0")}.${month.toString().padStart(2, "0")}.${new Date(joined).getFullYear()}*\n` +
                 `🧠 Last time trained — *${moment(lastUsed).fromNow()}*\n` +
                 `💪 Difficulty — *${emoji}*\n` +
