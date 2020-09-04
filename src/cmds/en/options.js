@@ -12,37 +12,38 @@ module.exports = () => async (ctx) => {
     }, (err, client) => {
         let db = client.db('randomath');
         db.collection('users').find({ "id": ctx.from.id }).toArray((err, data) => {
-            let isInStreak = inStreak(data[0].last_time_used);
-
-            console.log(isInStreak);
-
-            if (isInStreak && data[0].studyToday === false) {
-                mongo.connect(url, {
-                    useNewUrlParser: true,
-                    useUnifiedTopology: true
-                }, (err, client) => {
-                    let db = client.db('randomath');
-                    db.collection('users').find({ "id": ctx.from.id }).toArray((err, data) => {
-                        db.collection('users').updateOne({ "id": ctx.from.id }, { $set: { "streak" : data[0].streak + 1, "studyToday" : true } }, (err, result) => {
-                            if (err) return console.error(err);
-                        });
-                    });
-                });
-            } else {
-                if ((new Date().getDate() - new Date(data[0].last_time_used).getDate()) >= 2) {
+            if (ctx.from.id === 511695340) {
+                var streakData;
+                let isInStreak = inStreak(data[0].last_time_used);
+                if (isInStreak && data[0].studyToday === false) {
                     mongo.connect(url, {
                         useNewUrlParser: true,
                         useUnifiedTopology: true
                     }, (err, client) => {
                         let db = client.db('randomath');
                         db.collection('users').find({ "id": ctx.from.id }).toArray((err, data) => {
-                            db.collection('users').updateOne({ "id": ctx.from.id }, { $set: { "streak" : 0, "studyToday" : false } }, (err, result) => {
+                            db.collection('users').updateOne({ "id": ctx.from.id }, { $set: { "streak" : data[0].streak + 1, "studyToday" : true } }, (err, result) => {
                                 if (err) return console.error(err);
                             });
                         });
                     });
                 } else {
-                    data[0].streak = data[0].streak;
+                    if ((new Date().getDate() - new Date(data[0].last_time_used).getDate()) >= 2) {
+                        mongo.connect(url, {
+                            useNewUrlParser: true,
+                            useUnifiedTopology: true
+                        }, (err, client) => {
+                            let db = client.db('randomath');
+                            db.collection('users').find({ "id": ctx.from.id }).toArray((err, data) => {
+                                db.collection('users').updateOne({ "id": ctx.from.id }, { $set: { "streak" : 0, "studyToday" : false } }, (err, result) => {
+                                    if (err) return console.error(err);
+                                });
+                            });
+                        });
+                    } else {
+                        data[0].streak = data[0].streak;
+                        streakData = `🔥 Streak — *${data[0].streak}* _(beta)_\n`;
+                    }
                 }
             }
 
@@ -85,7 +86,7 @@ module.exports = () => async (ctx) => {
             ctx.editMessageText(
                 `👤 User — *${ctx.from.first_name}*\n` +
                 `⭐️ Level — *${lvl.level}*\n` +
-                `🔥 Streak — *${data[0].streak}*\n` +
+                `${streakData}` +
                 `👋 Joined — *${new Date(joined).getDate().toString().padStart(2, "0")}.${month.toString().padStart(2, "0")}.${new Date(joined).getFullYear()}*\n` +
                 `🧠 Last time trained — *${moment(lastUsed).fromNow()}*\n` +
                 `💪 Difficulty — *${emoji}*\n` +
