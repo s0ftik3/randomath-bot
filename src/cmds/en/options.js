@@ -44,6 +44,8 @@ module.exports = () => async (ctx) => {
 
             let emoji = (difficulty === 0) ? '🤓 Easy' : (difficulty === 1) ? '🧐 Medium' : '🤯 Hard';
             let back = (difficulty === 0) ? 'edit_0' : (difficulty === 1) ? 'edit_1' : 'edit_2';
+
+            moment.locale('en');
     
             ctx.editMessageText(
                 `👤 User — *${ctx.from.first_name}*\n` +
