@@ -41,8 +41,6 @@ module.exports = () => async (ctx) => {
                 });
             });
 
-            let used = lastTimeUse(lastUsed, 'RU');
-
             let month = new Date(joined).getMonth() + 1;
 
             let emoji = (difficulty === 0) ? '🤓 Легко' : (difficulty === 1) ? '🧐 Средне' : '🤯 Тяжело';
@@ -53,7 +51,7 @@ module.exports = () => async (ctx) => {
                 `⭐️ Уровень — *${lvl.level}*\n` +
                 `👋 Присоединился — *${new Date(joined).getDate().toString().padStart(2, "0")}.${month.toString().padStart(2, "0")}.${new Date(joined).getFullYear()}*\n` +
                 `🧠 Последняя тренировка — *${moment(lastUsed).fromNow()}*\n` +
-                `💪 Сложность — ${emoji}\n` +
+                `💪 Сложность — *${emoji}*\n` +
                 `🧨 Ошибок — *${falsePercent}%*\n\n` +
                 `*${lvl.nextLevel}*`, {
                 reply_markup: {
