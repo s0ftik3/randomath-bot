@@ -42,7 +42,7 @@ module.exports = () => async (ctx) => {
                         });
                     });
                 } else {
-                    return data[0].streak = data[0].streak;
+                    data[0].streak = data[0].streak;
                 }
             }
 
