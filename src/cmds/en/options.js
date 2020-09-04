@@ -41,6 +41,17 @@ module.exports = () => async (ctx) => {
                             });
                         });
                     } else {
+                        mongo.connect(url, {
+                            useNewUrlParser: true,
+                            useUnifiedTopology: true
+                        }, (err, client) => {
+                            let db = client.db('randomath');
+                            db.collection('users').find({ "id": ctx.from.id }).toArray((err, data) => {
+                                db.collection('users').updateOne({ "id": ctx.from.id }, { $set: { "streak" : data[0].streak + 1, "studyToday" : true } }, (err, result) => {
+                                    if (err) return console.error(err);
+                                });
+                            });
+                        });
                         data[0].streak = data[0].streak;
                         streakData = `🔥 Streak — *${data[0].streak}* _(beta)_\n`;
                     }
