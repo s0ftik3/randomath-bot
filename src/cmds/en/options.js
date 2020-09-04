@@ -1,5 +1,6 @@
 const config = require('../../config');
 const defineLevel = require('../../scripts/defineLevel');
+const inStreak = require('../../scripts/inStreak');
 const mongo = require('mongodb');
 const moment = require('moment');
 const url = process.env.MONGO;
@@ -11,6 +12,34 @@ module.exports = () => async (ctx) => {
     }, (err, client) => {
         let db = client.db('randomath');
         db.collection('users').find({ "id": ctx.from.id }).toArray((err, data) => {
+            let isInStrake = inStreak(data[0].last_time_used);
+
+            if (isInStrake && !data[0].studyToday) {
+                mongo.connect(url, {
+                    useNewUrlParser: true,
+                    useUnifiedTopology: true
+                }, (err, client) => {
+                    let db = client.db('randomath');
+                    db.collection('users').find({ "id": ctx.from.id }).toArray((err, data) => {
+                        db.collection('users').updateOne({ "id": ctx.from.id }, { $set: { "streak" : streak + 1, "studyToday" : true } }, (err, result) => {
+                            if (err) return console.error(err);
+                        });
+                    });
+                });
+            } else {
+                mongo.connect(url, {
+                    useNewUrlParser: true,
+                    useUnifiedTopology: true
+                }, (err, client) => {
+                    let db = client.db('randomath');
+                    db.collection('users').find({ "id": ctx.from.id }).toArray((err, data) => {
+                        db.collection('users').updateOne({ "id": ctx.from.id }, { $set: { "streak" : 0, "studyToday" : false } }, (err, result) => {
+                            if (err) return console.error(err);
+                        });
+                    });
+                });
+            }
+
             let correct = data[0].true_answers;
             let incorrect = data[0].false_answers;
             let joined = data[0].timestamp;
@@ -50,6 +79,7 @@ module.exports = () => async (ctx) => {
             ctx.editMessageText(
                 `👤 User — *${ctx.from.first_name}*\n` +
                 `⭐️ Level — *${lvl.level}*\n` +
+                `🔥 Streak — *${lvl}*` +
                 `👋 Joined — *${new Date(joined).getDate().toString().padStart(2, "0")}.${month.toString().padStart(2, "0")}.${new Date(joined).getFullYear()}*\n` +
                 `🧠 Last time trained — *${moment(lastUsed).fromNow()}*\n` +
                 `💪 Difficulty — *${emoji}*\n` +
