@@ -2,7 +2,9 @@ const config = require('../../config');
 const lastTimeUse = require('../../scripts/lastTimeUse');
 const defineLevel = require('../../scripts/defineLevel');
 const mongo = require('mongodb');
+const moment = require('moment');
 const url = process.env.MONGO;
+moment.locale('ru');
 
 module.exports = () => async (ctx) => {
     mongo.connect(url, {
@@ -51,7 +53,7 @@ module.exports = () => async (ctx) => {
                 `👤 Пользователь — *${ctx.from.first_name}*\n` +
                 `⭐️ Уровень — *${lvl.level}*\n` +
                 `👋 Присоединился — *${new Date(joined).getDate().toString().padStart(2, "0")}.${month.toString().padStart(2, "0")}.${new Date(joined).getFullYear()}*\n` +
-                `🧠 Последняя тренировка — *${used}*\n` +
+                `🧠 Последняя тренировка — *${moment(lastUsed).fromNow()}*\n` +
                 `💪 Сложность — ${emoji}\n` +
                 `🧨 Ошибок — *${falsePercent}%*\n\n` +
                 `*${lvl.nextLevel}*`, {
