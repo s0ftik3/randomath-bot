@@ -45,6 +45,8 @@ module.exports = () => async (ctx) => {
                         streakData = `🔥 Streak — *${data[0].streak}* _(beta)_\n`;
                     }
                 }
+            } else {
+                streakData = '';
             }
 
             let correct = data[0].true_answers;
