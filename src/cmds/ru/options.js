@@ -1,5 +1,4 @@
 const config = require('../../config');
-const lastTimeUse = require('../../scripts/lastTimeUse');
 const defineLevel = require('../../scripts/defineLevel');
 const mongo = require('mongodb');
 const moment = require('moment');
