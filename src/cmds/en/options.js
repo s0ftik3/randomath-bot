@@ -15,9 +15,8 @@ module.exports = () => async (ctx) => {
             let isInStreak = inStreak(data[0].last_time_used);
 
             console.log(isInStreak);
-            console.log(!data[0].studyToday);
 
-            if (isInStreak && !data[0].studyToday) {
+            if (isInStreak && data[0].studyToday) {
                 mongo.connect(url, {
                     useNewUrlParser: true,
                     useUnifiedTopology: true
