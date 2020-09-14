@@ -18,7 +18,6 @@ module.exports = () => (ctx) => {
         .find({ id: ctx.from.id })
         .toArray((err, data) => {
           let mode = ctx.callbackQuery.data.replace(/ruMode_/gi, "");
-          console.log(mode);
 
           let difficulty = data[0].difficulty;
 
