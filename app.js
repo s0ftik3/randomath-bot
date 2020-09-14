@@ -107,7 +107,7 @@ bot.action("dev:ru:block", (ctx) =>
 bot.action("comp:ru:block", (ctx) =>
   ctx.answerCbQuery("⚠️ Вам нужно достичь 10 уровня.")
 );
-
+//
 bot.action(/ru_mode-*\w+/, defineModeRu());
 bot.action("ru_right_add", rightAddRu());
 bot.action("ru_right_sub", rightSubRu());
