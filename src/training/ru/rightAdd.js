@@ -51,11 +51,11 @@ module.exports = () => (ctx) => {
                 let answerDataT = 'wrong3:ru';
         
                 if (sample[0].answers[0] === trueAnswer) {
-                    answerDataF = 'rightAdd:ru';
+                    answerDataF = 'ru_right_add';
                 } else if (sample[0].answers[1] === trueAnswer) {
-                    answerDataS = 'rightAdd:ru';
+                    answerDataS = 'ru_right_add';
                 } else if (sample[0].answers[2] === trueAnswer) {
-                    answerDataT = 'rightAdd:ru';
+                    answerDataT = 'ru_right_add';
                 }
         
                 await ctx.editMessageMedia({ type: 'photo', media: image})

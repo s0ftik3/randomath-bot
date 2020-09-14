@@ -51,11 +51,11 @@ module.exports = () => (ctx) => {
                 let answerDataT = 'wrong3:ru';
         
                 if (sample[0].answers[0] === trueAnswer) {
-                    answerDataF = 'rightMult:ru';
+                    answerDataF = 'ru_right_mult';
                 } else if (sample[0].answers[1] === trueAnswer) {
-                    answerDataS = 'rightMult:ru';
+                    answerDataS = 'ru_right_mult';
                 } else if (sample[0].answers[2] === trueAnswer) {
-                    answerDataT = 'rightMult:ru';
+                    answerDataT = 'ru_right_mult';
                 }
         
 
