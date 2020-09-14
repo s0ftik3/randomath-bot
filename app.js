@@ -8,17 +8,12 @@ const { reminder } = require("./src/scripts");
 
 // English version of the bot
 const {
-  addCommand,
-  subCommand,
-  multCommand,
-  devCommand,
-  compCommand,
+  defineMode,
   rightAdd,
   rightSub,
   rightMult,
   rightDiv,
   rightComp,
-  defineMode,
   wrong
 } = require("./src/training/en");
 
@@ -36,21 +31,16 @@ const { easy, medium, hard } = require("./src/difficulty/en");
 
 // Russian version of the bot
 const {
-  addCommandRu,
-  subCommandRu,
-  multCommandRu,
-  devCommandRu,
-  compCommandRu,
+  defineMode,
   rightAddRu,
   rightSubRu,
   rightMultRu,
-  rightDevRu,
+  rightDivRu,
   rightCompRu,
   wrongRu,
 } = require("./src/training/ru");
 
 const {
-  startCommandRu,
   helpCommandRu,
   trainCommandRu,
   backCommandRu,
@@ -66,7 +56,6 @@ bot.start(startCommand());
 
 bot.action("train", trainCommand());
 bot.action("help", helpCommand());
-bot.action("back", backCommand());
 bot.action("options", optionsCommand());
 bot.action("edit_0", easy());
 bot.action("edit_1", medium());
@@ -74,11 +63,7 @@ bot.action("edit_2", hard());
 bot.action("lang", optionsCommandRu());
 bot.action("achievements", achievementsCommand());
 
-bot.action("add", addCommand());
-bot.action("sub", subCommand());
-bot.action("mult", multCommand());
-bot.action("dev", devCommand());
-bot.action("comp", compCommand());
+bot.action("back", backCommand());
 bot.action("back:train", backTrain());
 
 bot.action("mult:block", (ctx) =>
@@ -91,20 +76,18 @@ bot.action("comp:block", (ctx) =>
   ctx.answerCbQuery("⚠️ You should reach 10th level.")
 );
 
-bot.action(["wrong1", "wrong2", "wrong3"], wrong());
-
 bot.action(/mode-*\w+/, defineMode());
-
 bot.action("right_add", rightAdd());
 bot.action("right_sub", rightSub());
 bot.action("right_mult", rightMult());
 bot.action("right_div", rightDiv());
 bot.action("right_comp", rightComp());
 
+bot.action(["wrong1", "wrong2", "wrong3"], wrong());
+
 // Russian commands
 bot.action("train:ru", trainCommandRu());
 bot.action("help:ru", helpCommandRu());
-bot.action("back:ru", backCommandRu());
 bot.action("options:ru", optionsCommandRu());
 bot.action("edit_0:ru", easyRu());
 bot.action("edit_1:ru", mediumRu());
@@ -112,11 +95,7 @@ bot.action("edit_2:ru", hardRu());
 bot.action("lang:en", optionsCommand());
 bot.action("achievements:ru", achievementsCommandRu());
 
-bot.action("add:ru", addCommandRu());
-bot.action("sub:ru", subCommandRu());
-bot.action("mult:ru", multCommandRu());
-bot.action("dev:ru", devCommandRu());
-bot.action("comp:ru", compCommandRu());
+bot.action("back:ru", backCommandRu());
 bot.action("back:train:ru", backTrainRu());
 
 bot.action("mult:ru:block", (ctx) =>
@@ -129,20 +108,21 @@ bot.action("comp:ru:block", (ctx) =>
   ctx.answerCbQuery("⚠️ Вам нужно достичь 10 уровня.")
 );
 
-bot.action(["wrong1:ru", "wrong2:ru", "wrong3:ru"], wrongRu());
+bot.action(/ru_mode-*\w+/, defineMode());
+bot.action("ru_right_add", rightAddRu());
+bot.action("ru_right_sub", rightSubRu());
+bot.action("ru_right_mult", rightMultRu());
+bot.action("ru_right_div", rightDivRu());
+bot.action("ru_right_comp", rightCompRu());
 
-bot.action("rightAdd:ru", rightAddRu());
-bot.action("rightSub:ru", rightSubRu());
-bot.action("rightMult:ru", rightMultRu());
-bot.action("rightDev:ru", rightDevRu());
-bot.action("rightComp:ru", rightCompRu());
+bot.action(["wrong1:ru", "wrong2:ru", "wrong3:ru"], wrongRu());
 
 // Indicates that the bot has been started
 bot.telegram.getMe().then((bot) => {
   console.log(`${bot.first_name} bot has been started. Enjoy!`);
 });
 
-// Checks if the reminder need to be sent or not
+// Checks if the reminder need to be send or not
 setInterval(() => {
   reminder();
 }, 3600000);

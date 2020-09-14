@@ -14,14 +14,14 @@
         [{ "text": "⬅️ Back", "callback_data": "back" }]
     ],
     "train_keyboard_less_5_lvl": [
-        [{ "text": "➕ Addition", "callback_data": "add" }, { "text": "➖ Subtraction", "callback_data": "sub" }],
+        [{ "text": "➕ Addition", "callback_data": "mode_add" }, { "text": "➖ Subtraction", "callback_data": "mode_sub" }],
         [{ "text": "🔒 Multiplication", "callback_data": "mult:block" }, { "text": "🔒 Division", "callback_data": "dev:block" }],
         [{ "text": "🔒 Comparison", "callback_data": "comp:block" }],
         [{ "text": "⬅️ Back", "callback_data": "back" }]
     ],
     "train_keyboard_less_10_lvl": [
-        [{ "text": "➕ Addition", "callback_data": "add" }, { "text": "➖ Subtraction", "callback_data": "sub" }],
-        [{ "text": "✖️ Multiplication", "callback_data": "mult" }, { "text": "➗ Division", "callback_data": "dev" }],
+        [{ "text": "➕ Addition", "callback_data": "mode_add" }, { "text": "➖ Subtraction", "callback_data": "mode_sub" }],
+        [{ "text": "✖️ Multiplication", "callback_data": "mode_mult" }, { "text": "➗ Division", "callback_data": "mode_div" }],
         [{ "text": "🔒 Comparison", "callback_data": "comp:block" }],
         [{ "text": "⬅️ Back", "callback_data": "back" }]
     ],
@@ -34,20 +34,20 @@
         [{ "text": "🏅 Достижения", "callback_data": "achievements:ru" }, { "text": "⚙️ Настройки", "callback_data": "options:ru" }]
     ],
     "train_keyboard_ru": [
-        [{ "text": "➕ Сложение", "callback_data": "add:ru" }, { "text": "➖ Вычитание", "callback_data": "sub:ru" }],
-        [{ "text": "✖️ Умножение", "callback_data": "mult:ru" }, { "text": "➗ Деление", "callback_data": "dev:ru" }],
-        [{ "text": "⚖️ Сравнение", "callback_data": "comp:ru" }],
+        [{ "text": "➕ Сложение", "callback_data": "ru_mode_add" }, { "text": "➖ Вычитание", "callback_data": "ru_mode_sub" }],
+        [{ "text": "✖️ Умножение", "callback_data": "ru_mode_mult" }, { "text": "➗ Деление", "callback_data": "ru_mode_div" }],
+        [{ "text": "⚖️ Сравнение", "callback_data": "ru_mode_comp" }],
         [{ "text": "⬅️ Назад", "callback_data": "back:ru" }]
     ],
     "train_keyboard_ru_less_5_lvl": [
-        [{ "text": "➕ Сложение", "callback_data": "add:ru" }, { "text": "➖ Вычитание", "callback_data": "sub:ru" }],
+        [{ "text": "➕ Сложение", "callback_data": "ru_mode_add" }, { "text": "➖ Вычитание", "callback_data": "ru_mode_sub" }],
         [{ "text": "🔒 Умножение", "callback_data": "mult:ru:block" }, { "text": "🔒 Деление", "callback_data": "dev:ru:block" }],
         [{ "text": "🔒 Сравнение", "callback_data": "comp:ru:block" }],
         [{ "text": "⬅️ Назад", "callback_data": "back:ru" }]
     ],
     "train_keyboard_ru_less_10_lvl": [
-        [{ "text": "➕ Сложение", "callback_data": "add:ru" }, { "text": "➖ Вычитание", "callback_data": "sub:ru" }],
-        [{ "text": "✖️ Умножение", "callback_data": "mult:ru" }, { "text": "➗ Деление", "callback_data": "dev:ru" }],
+        [{ "text": "➕ Сложение", "callback_data": "ru_mode_add" }, { "text": "➖ Вычитание", "callback_data": "ru_mode_sub" }],
+        [{ "text": "✖️ Умножение", "callback_data": "ru_mode_mult" }, { "text": "➗ Деление", "callback_data": "ru_mode_div" }],
         [{ "text": "🔒 Сравнение", "callback_data": "comp:ru:block" }],
         [{ "text": "⬅️ Назад", "callback_data": "back:ru" }]
     ],

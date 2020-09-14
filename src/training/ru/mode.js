@@ -17,7 +17,7 @@ module.exports = () => (ctx) => {
       db.collection("users")
         .find({ id: ctx.from.id })
         .toArray((err, data) => {
-          let mode = ctx.callbackQuery.data.replace(/mode_/gi, "");
+          let mode = ctx.callbackQuery.data.replace(/ru_mode_/gi, "");
 
           let difficulty = data[0].difficulty;
 
@@ -53,16 +53,16 @@ module.exports = () => (ctx) => {
 
               let trueAnswer = sample[0].answer;
 
-              let answerDataF = "wrong1";
-              let answerDataS = "wrong2";
-              let answerDataT = "wrong3";
+              let answerDataF = "wrong1:ru";
+              let answerDataS = "wrong2:ru";
+              let answerDataT = "wrong3:ru";
 
               if (sample[0].answers[0] === trueAnswer) {
-                answerDataF = `right_${mode}`;
+                answerDataF = `ru_right_${mode}`;
               } else if (sample[0].answers[1] === trueAnswer) {
-                answerDataS = `right_${mode}`;
+                answerDataS = `ru_right_${mode}`;
               } else if (sample[0].answers[2] === trueAnswer) {
-                answerDataT = `right_${mode}`;
+                answerDataT = `ru_right_${mode}`;
               }
 
               ctx.deleteMessage();
@@ -83,7 +83,7 @@ module.exports = () => (ctx) => {
                         callback_data: answerDataT,
                       },
                     ],
-                    [{ text: "⬅️ Back", callback_data: "back:train" }],
+                    [{text: '⬅️ Назад', callback_data: 'back:train:ru'}],
                   ],
                 },
               });
