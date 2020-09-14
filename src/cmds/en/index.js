@@ -2,7 +2,6 @@ const startCommand = require("./menu");
 const trainCommand = require("./train");
 const helpCommand = require("./help");
 const backCommand = require("./back");
-const testCommand = require("./test");
 const achievementsCommand = require("./achievements");
 const optionsCommand = require("./options");
 
@@ -13,7 +12,6 @@ module.exports = {
   helpCommand,
   trainCommand,
   backCommand,
-  testCommand,
   backTrain,
   optionsCommand,
   achievementsCommand,
