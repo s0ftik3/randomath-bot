@@ -1,6 +1,6 @@
 {
     "name": "Randomath",
-    "version": "2.29.0",
+    "version": "2.90.0",
     "author": "@id160",
     "main_keyboard": [
         [{ "text": "🎓 Study", "callback_data": "train" }],

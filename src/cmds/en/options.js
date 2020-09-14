@@ -1,6 +1,5 @@
 const config = require("../../config");
 const defineLevel = require("../../scripts/defineLevel");
-const inStreak = require("../../scripts/inStreak");
 const mongo = require("mongodb");
 const moment = require("moment");
 const url = process.env.MONGO;
@@ -94,9 +93,9 @@ module.exports = () => async (ctx) => {
                 .padStart(2, "0")}.${month
                 .toString()
                 .padStart(2, "0")}.${new Date(joined).getFullYear()}*\n` +
-              `🧠 Last time trained — *${moment(lastUsed).fromNow()}*\n` +
-              `💪 Difficulty — *${emoji}*\n` +
-              `🧨 Mistakes — *${falsePercent}%*\n\n` +
+              `🕗 Last time trained — *${moment(lastUsed).fromNow()}*\n` +
+              `🧠 Difficulty — *${emoji}*\n` +
+              `💥 Mistakes — *${falsePercent}%*\n\n` +
               `*${lvl.nextLevel}*`,
             {
               reply_markup: {

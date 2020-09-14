@@ -94,9 +94,9 @@ module.exports = () => async (ctx) => {
                 .padStart(2, "0")}.${month
                 .toString()
                 .padStart(2, "0")}.${new Date(joined).getFullYear()}*\n` +
-              `🧠 Последняя тренировка — *${moment(lastUsed).fromNow()}*\n` +
-              `💪 Сложность — *${emoji}*\n` +
-              `🧨 Ошибок — *${falsePercent}%*\n\n` +
+              `🕗 Последняя тренировка — *${moment(lastUsed).fromNow()}*\n` +
+              `🧠 Сложность — *${emoji}*\n` +
+              `💥 Ошибок — *${falsePercent}%*\n\n` +
               `*${lvl.nextLevel}*`,
             {
               reply_markup: {
