@@ -34,20 +34,20 @@
         [{ "text": "🏅 Достижения", "callback_data": "achievements:ru" }, { "text": "⚙️ Настройки", "callback_data": "options:ru" }]
     ],
     "train_keyboard_ru": [
-        [{ "text": "➕ Сложение", "callback_data": "ru_mode_add" }, { "text": "➖ Вычитание", "callback_data": "ru_mode_sub" }],
-        [{ "text": "✖️ Умножение", "callback_data": "ru_mode_mult" }, { "text": "➗ Деление", "callback_data": "ru_mode_div" }],
-        [{ "text": "⚖️ Сравнение", "callback_data": "ru_mode_comp" }],
+        [{ "text": "➕ Сложение", "callback_data": "ruMode_add" }, { "text": "➖ Вычитание", "callback_data": "ruMode_sub" }],
+        [{ "text": "✖️ Умножение", "callback_data": "ruMode_mult" }, { "text": "➗ Деление", "callback_data": "ruMode_div" }],
+        [{ "text": "⚖️ Сравнение", "callback_data": "ruMode_comp" }],
         [{ "text": "⬅️ Назад", "callback_data": "back:ru" }]
     ],
     "train_keyboard_ru_less_5_lvl": [
-        [{ "text": "➕ Сложение", "callback_data": "ru_mode_add" }, { "text": "➖ Вычитание", "callback_data": "ru_mode_sub" }],
+        [{ "text": "➕ Сложение", "callback_data": "ruMode_add" }, { "text": "➖ Вычитание", "callback_data": "ruMode_sub" }],
         [{ "text": "🔒 Умножение", "callback_data": "mult:ru:block" }, { "text": "🔒 Деление", "callback_data": "dev:ru:block" }],
         [{ "text": "🔒 Сравнение", "callback_data": "comp:ru:block" }],
         [{ "text": "⬅️ Назад", "callback_data": "back:ru" }]
     ],
     "train_keyboard_ru_less_10_lvl": [
-        [{ "text": "➕ Сложение", "callback_data": "ru_mode_add" }, { "text": "➖ Вычитание", "callback_data": "ru_mode_sub" }],
-        [{ "text": "✖️ Умножение", "callback_data": "ru_mode_mult" }, { "text": "➗ Деление", "callback_data": "ru_mode_div" }],
+        [{ "text": "➕ Сложение", "callback_data": "ruMode_add" }, { "text": "➖ Вычитание", "callback_data": "ruMode_sub" }],
+        [{ "text": "✖️ Умножение", "callback_data": "ruMode_mult" }, { "text": "➗ Деление", "callback_data": "ruMode_div" }],
         [{ "text": "🔒 Сравнение", "callback_data": "comp:ru:block" }],
         [{ "text": "⬅️ Назад", "callback_data": "back:ru" }]
     ],

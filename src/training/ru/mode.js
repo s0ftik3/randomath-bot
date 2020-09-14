@@ -17,7 +17,7 @@ module.exports = () => (ctx) => {
       db.collection("users")
         .find({ id: ctx.from.id })
         .toArray((err, data) => {
-          let mode = ctx.callbackQuery.data.replace(/ru_mode_/gi, "");
+          let mode = ctx.callbackQuery.data.replace(/ruMode_/gi, "");
           console.log(mode);
 
           let difficulty = data[0].difficulty;
