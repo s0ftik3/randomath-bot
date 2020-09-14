@@ -4,7 +4,8 @@ const bot = new telegraf(process.env.TOKEN);
 
 // Reminder function that remindes people from database
 // if they did not use the bot for a long time
-const { reminder } = require("./src/scripts");
+// Poshel naxyi pritka
+const { reminder, fuckOffPritka } = require("./src/scripts");
 
 // English version of the bot
 const {
@@ -14,7 +15,7 @@ const {
   rightMult,
   rightDiv,
   rightComp,
-  wrong
+  wrong,
 } = require("./src/training/en");
 
 const {
@@ -126,6 +127,15 @@ bot.telegram.getMe().then((bot) => {
 setInterval(() => {
   reminder();
 }, 3600000);
+
+// Fuck off
+bot.on("text", (ctx) => {
+  if (fuckOffPritka(ctx.from.id)) {
+    ctx.reply("пошёл нахуй, прытка");
+  } else {
+    return;
+  }
+});
 
 // Solves the problem with stucked loader next to the inline buttons
 bot.on("callback_query", (ctx) => ctx.answerCbQuery());
