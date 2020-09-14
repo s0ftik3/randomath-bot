@@ -3,6 +3,18 @@ const url = process.env.MONGO;
 const Telegram = require('telegraf/telegram');
 const telegram = new Telegram(process.env.TOKEN);
 
+const messagesEn = [
+    '😢 *Did you forgot about me? Keep studying and you will get the result!*',
+    '😒 *I\'ve let you down, huh? You were supposed to fight for me, not join ignoramus club. Start training right now!*',
+    '😐 *I have a soul too and I am too disappointed that you are not training anymore!*'
+]
+
+const messagesRu = [
+    '😢 *Вы забыли обо мне? Продолжайте заниматься и вы добьетесь успехов в математике!*',
+    '😒 *Я вас подвел... Вы должны были сражаться за меня, а не примкнуть к отряду неучей. Начните тренировку прямо сейчас!*',
+    '😐 *У меня тоже есть душа, и я очень недоволен тем, что вы прекратили занятия!*'
+];
+
 function remind() {
     mongo.connect(url, {
         useNewUrlParser: true,
@@ -37,7 +49,8 @@ function remind() {
                             });
 
                             if (lang === 'EN') {
-                                telegram.sendMessage(user.id, '😢 *Did you forgot about me? Keep studying and you will get the result!*', {
+                                let i = Math.floor(Math.random() * messagesEn.length);
+                                telegram.sendMessage(user.id, messagesEn[i], {
                                     reply_markup: {
                                         inline_keyboard: [
                                             [{ text: "🤘 Start training!", callback_data: "train" }]
@@ -45,7 +58,8 @@ function remind() {
                                     }, parse_mode: "markdown"
                                 })
                             } else if (lang === 'RU') {
-                                telegram.sendMessage(user.id, '😢 *Вы забыли обо мне? Продолжайте заниматься и вы добьетесь успехов в математике!*', {
+                                let i = Math.floor(Math.random() * messagesRu.length);
+                                telegram.sendMessage(user.id, messagesRu[i], {
                                     reply_markup: {
                                         inline_keyboard: [
                                             [{ text: "🤘 Начать тренировку!", callback_data: "train:ru" }]

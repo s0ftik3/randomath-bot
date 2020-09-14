@@ -8,9 +8,9 @@
         [{ "text": "🏅 Achievements", "callback_data": "achievements" }, { "text": "⚙️ Options", "callback_data": "options" }]
     ],
     "train_keyboard": [
-        [{ "text": "➕ Addition", "callback_data": "add" }, { "text": "➖ Subtraction", "callback_data": "sub" }],
-        [{ "text": "✖️ Multiplication", "callback_data": "mult" }, { "text": "➗ Division", "callback_data": "dev" }],
-        [{ "text": "⚖️ Comparison", "callback_data": "comp" }],
+        [{ "text": "➕ Addition", "callback_data": "mode_add" }, { "text": "➖ Subtraction", "callback_data": "mode_sub" }],
+        [{ "text": "✖️ Multiplication", "callback_data": "mode_mult" }, { "text": "➗ Division", "callback_data": "mode_div" }],
+        [{ "text": "⚖️ Comparison", "callback_data": "mode_comp" }],
         [{ "text": "⬅️ Back", "callback_data": "back" }]
     ],
     "train_keyboard_less_5_lvl": [
