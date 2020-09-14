@@ -31,7 +31,7 @@ const { easy, medium, hard } = require("./src/difficulty/en");
 
 // Russian version of the bot
 const {
-  defineMode,
+  defineModeRu,
   rightAddRu,
   rightSubRu,
   rightMultRu,

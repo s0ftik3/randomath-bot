@@ -1,4 +1,4 @@
-const defineMode = require('./mode');
+const defineModeRu = require('./mode');
 
 const rightAddRu = require('./rightAdd');
 const rightSubRu = require('./rightSub');
@@ -9,7 +9,7 @@ const rightCompRu = require('./rightComp');
 const wrongRu = require('./wrong');
  
 module.exports = {
-    defineMode,
+    defineModeRu,
     rightAddRu,
     rightSubRu,
     rightMultRu,
