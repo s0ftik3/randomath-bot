@@ -15,7 +15,8 @@ module.exports = () => async (ctx) => {
       let db = client.db("randomath");
       db.collection("users")
         .find({ id: ctx.from.id })
-        .toArray((err, data) => {
+        .toArray((err, data) => { 
+          if (data.length <= 0) return ctx.answerCbQuery('⚠️ Please, use /start again.');
           let correct = data[0].true_answers;
           let incorrect = data[0].false_answers;
           let joined = data[0].timestamp;
