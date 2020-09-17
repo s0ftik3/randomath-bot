@@ -26,7 +26,6 @@ module.exports = () => async (ctx) => {
           let comparison = data[0].comparison;
 
           ctx.editMessageText(
-            `📊 *Statistics*\n\n` +
               `🎲 *Modes:*\n\n` +
               `➕ Addition — *${addition}*\n` + 
               `➖ Subtraction — *${subtraction}*\n` +
