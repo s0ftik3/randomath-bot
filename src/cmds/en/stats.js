@@ -27,13 +27,13 @@ module.exports = () => async (ctx) => {
 
           ctx.editMessageText(
             `📊 *Statistics*\n\n` +
-              `🎲 *Modes:*\n` +
+              `🎲 *Modes:*\n\n` +
               `➕ Addition — *${addition}*\n` + 
               `➖ Subtraction — *${subtraction}*\n` +
               `✖️ Multiplication — *${multiplication}*\n` +
               `➗ Division — *${division}*\n` +
               `⚖️ Comparison — *${comparison}*\n\n` +
-              `🧮 *Total:*\n` +
+              `🧮 *Total:*\n\n` +
               `✅ Correct answers — *${correct}*\n` +
               `❌ Incorrect answers — *${incorrect}*`,
             {
