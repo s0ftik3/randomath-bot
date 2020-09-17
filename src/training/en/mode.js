@@ -43,7 +43,7 @@ module.exports = () => (ctx) => {
               lineHeight: 70,
               customHeight: 250,
               margin: 10,
-              bgColor: "#eb6a55",
+              bgColor: "#309f5e",
               textColor: "#f1f1e9",
             })
             .then(function (dataUri) {
@@ -83,12 +83,12 @@ module.exports = () => (ctx) => {
                         callback_data: answerDataT,
                       },
                     ],
-                    [{ text: "⬅️ Back", callback_data: "back:train" }],
+                    [{ text: "❌ Stop", callback_data: "back:train" }],
                   ],
                 },
               });
             });
-          ctx.answerCbQuery();
+          ctx.answerCbQuery('📚 The training is started...');
         });
     }
   );

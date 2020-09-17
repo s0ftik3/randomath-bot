@@ -37,7 +37,7 @@ module.exports = () => (ctx) => {
                 lineHeight: 70,
                 customHeight: 250,
                 margin: 10,
-                bgColor: "#eb6a55",
+                bgColor: "#309f5e",
                 textColor: "#f1f1e9"
             }).then(async function (dataUri) {
                 let length = dataUri.length
@@ -66,7 +66,7 @@ module.exports = () => (ctx) => {
                         {text: sample[0].answers[2], callback_data: answerDataT}
                     ],
                     [
-                        {text: '⬅️ Back', callback_data: 'back:train'}
+                        {text: '❌ Stop', callback_data: 'back:train'}
                     ]] 
                 })
             });

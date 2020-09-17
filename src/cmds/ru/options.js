@@ -16,7 +16,7 @@ module.exports = () => async (ctx) => {
       db.collection("users")
         .find({ id: ctx.from.id })
         .toArray((err, data) => {
-          if (data.length <= 0) return ctx.answerCbQuery('⚠️ Пожалуйста, отправьте /start снова.');
+          if (data.length <= 0) return ctx.answerCbQuery("⚠️ Пожалуйста, отправьте /start снова.");
           let correct = data[0].true_answers;
           let incorrect = data[0].false_answers;
           let joined = data[0].timestamp;
@@ -86,6 +86,26 @@ module.exports = () => async (ctx) => {
 
           moment.locale("ru");
 
+          let menu;
+          if (correct > 700) {
+            menu = [
+              [
+                { text: "🇷🇺 Язык", callback_data: "lang:en" },
+                { text: emoji, callback_data: back },
+              ],
+              [{ text: "📊 Статистика", callback_data: "stats:ru" }],
+              [{ text: "⬅️ Назад", callback_data: "back:ru" }],
+            ];
+          } else {
+            menu = [
+              [
+                { text: "🇷🇺 Язык", callback_data: "lang:en" },
+                { text: emoji, callback_data: back },
+              ],
+              [{ text: "⬅️ Назад", callback_data: "back:ru" }],
+            ];
+          }
+
           ctx.editMessageText(
             `👤 Пользователь — *${ctx.from.first_name}*\n` +
               `⭐️ Уровень — *${lvl.level}*\n` +
@@ -101,13 +121,7 @@ module.exports = () => async (ctx) => {
               `*${lvl.nextLevel}*`,
             {
               reply_markup: {
-                inline_keyboard: [
-                  [
-                    { text: "🇷🇺 Язык", callback_data: "lang:en" },
-                    { text: emoji, callback_data: back },
-                  ],
-                  [{ text: "⬅️ Назад", callback_data: "back:ru" }],
-                ],
+                inline_keyboard: menu,
               },
               parse_mode: "markdown",
             }

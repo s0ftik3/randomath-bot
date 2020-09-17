@@ -15,8 +15,8 @@ module.exports = () => async (ctx) => {
       let db = client.db("randomath");
       db.collection("users")
         .find({ id: ctx.from.id })
-        .toArray((err, data) => { 
-          if (data.length <= 0) return ctx.answerCbQuery('⚠️ Please, use /start again.');
+        .toArray((err, data) => {
+          if (data.length <= 0) return ctx.answerCbQuery("⚠️ Please, use /start again.");
           let correct = data[0].true_answers;
           let incorrect = data[0].false_answers;
           let joined = data[0].timestamp;
@@ -85,6 +85,26 @@ module.exports = () => async (ctx) => {
 
           moment.locale("en");
 
+          let menu;
+          if (correct > 700) {
+            menu = [
+              [
+                { text: "🇬🇧 Language", callback_data: "lang" },
+                { text: emoji, callback_data: back },
+              ],
+              [{ text: "📊 Statistics", callback_data: "stats" }],
+              [{ text: "⬅️ Back", callback_data: "back" }],
+            ];
+          } else {
+            menu = [
+              [
+                { text: "🇬🇧 Language", callback_data: "lang" },
+                { text: emoji, callback_data: back },
+              ],
+              [{ text: "⬅️ Back", callback_data: "back" }],
+            ];
+          }
+
           ctx.editMessageText(
             `👤 User — *${ctx.from.first_name}*\n` +
               `⭐️ Level — *${lvl.level}*\n` +
@@ -100,13 +120,7 @@ module.exports = () => async (ctx) => {
               `*${lvl.nextLevel}*`,
             {
               reply_markup: {
-                inline_keyboard: [
-                  [
-                    { text: "🇬🇧 Language", callback_data: "lang" },
-                    { text: emoji, callback_data: back },
-                  ],
-                  [{ text: "⬅️ Back", callback_data: "back" }],
-                ],
+                inline_keyboard: menu,
               },
               parse_mode: "markdown",
             }

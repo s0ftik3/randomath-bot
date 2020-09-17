@@ -4,8 +4,7 @@ const bot = new telegraf(process.env.TOKEN);
 
 // Reminder function that remindes people from database
 // if they did not use the bot for a long time
-// Poshel naxyi pritka
-const { reminder, fuckOffPritka } = require("./src/scripts");
+const { reminder } = require("./src/scripts");
 
 // English version of the bot
 const {
@@ -26,6 +25,7 @@ const {
   optionsCommand,
   backTrain,
   achievementsCommand,
+  statsCommand
 } = require("./src/cmds/en");
 
 const { easy, medium, hard } = require("./src/difficulty/en");
@@ -48,6 +48,7 @@ const {
   optionsCommandRu,
   backTrainRu,
   achievementsCommandRu,
+  statsCommandRu
 } = require("./src/cmds/ru");
 
 const { easyRu, mediumRu, hardRu } = require("./src/difficulty/ru");
@@ -63,6 +64,7 @@ bot.action("edit_1", medium());
 bot.action("edit_2", hard());
 bot.action("lang", optionsCommandRu());
 bot.action("achievements", achievementsCommand());
+bot.action("stats", statsCommand());
 
 bot.action("back", backCommand());
 bot.action("back:train", backTrain());
@@ -95,6 +97,7 @@ bot.action("edit_1:ru", mediumRu());
 bot.action("edit_2:ru", hardRu());
 bot.action("lang:en", optionsCommand());
 bot.action("achievements:ru", achievementsCommandRu());
+bot.action("stats:ru", statsCommandRu());
 
 bot.action("back:ru", backCommandRu());
 bot.action("back:train:ru", backTrainRu());
@@ -108,7 +111,7 @@ bot.action("dev:ru:block", (ctx) =>
 bot.action("comp:ru:block", (ctx) =>
   ctx.answerCbQuery("⚠️ Вам нужно достичь 10 уровня.")
 );
-//
+
 bot.action(/ruMode-*\w+/, defineModeRu());
 bot.action("ru_right_add", rightAddRu());
 bot.action("ru_right_sub", rightSubRu());
@@ -127,15 +130,6 @@ bot.telegram.getMe().then((bot) => {
 setInterval(() => {
   reminder();
 }, 3600000);
-
-// Fuck off
-bot.on("text", (ctx) => {
-  if (fuckOffPritka(ctx.from.id)) {
-    ctx.reply("пошёл нахуй, прытка");
-  } else {
-    return;
-  }
-});
 
 // Solves the problem with stucked loader next to the inline buttons
 bot.on("callback_query", (ctx) => ctx.answerCbQuery());

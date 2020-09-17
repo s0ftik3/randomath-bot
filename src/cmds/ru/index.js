@@ -3,6 +3,7 @@ const helpCommandRu = require("./help");
 const backCommandRu = require("./back");
 const optionsCommandRu = require("./options");
 const achievementsCommandRu = require("./achievements");
+const statsCommandRu = require('./stats');
 
 const backTrainRu = require("./backTrain");
 
@@ -13,4 +14,5 @@ module.exports = {
   backTrainRu,
   optionsCommandRu,
   achievementsCommandRu,
+  statsCommandRu
 };

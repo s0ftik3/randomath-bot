@@ -4,6 +4,7 @@ const helpCommand = require("./help");
 const backCommand = require("./back");
 const achievementsCommand = require("./achievements");
 const optionsCommand = require("./options");
+const statsCommand = require('./stats');
 
 const backTrain = require("./backTrain");
 
@@ -15,4 +16,5 @@ module.exports = {
   backTrain,
   optionsCommand,
   achievementsCommand,
+  statsCommand
 };
