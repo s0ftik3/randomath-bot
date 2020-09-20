@@ -1,24 +1,57 @@
-const mongo = require('mongodb');
+const mongo = require("mongodb");
 const url = process.env.MONGO;
 
 module.exports = () => async (ctx) => {
-    mongo.connect(url, {
-        useNewUrlParser: true,
-        useUnifiedTopology: true
-    }, (err, client) => {
-        let db = client.db('randomath');
-        db.collection('users').find({ "id": ctx.from.id }).toArray((err, data) => {
-            db.collection('users').updateOne({ "id": ctx.from.id }, { $set: { "difficulty" : 1 } }, (err, result) => {
-                if (err) return console.error(err);
-            });
+  mongo.connect(
+    url,
+    {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    },
+    (err, client) => {
+      let db = client.db("randomath");
+      db.collection("users")
+        .find({ id: ctx.from.id })
+        .toArray((err, data) => {
+          db.collection("users").updateOne(
+            { id: ctx.from.id },
+            { $set: { difficulty: 1 } },
+            (err, result) => {
+              if (err) return console.error(err);
+            }
+          );
         });
-    });
+    }
+  );
 
-    ctx.editMessageReplyMarkup({
-        inline_keyboard: [
-            [{ text: "🇷🇺 Язык", callback_data: "lang:en" }, { text: '🧐 Средне', callback_data: 'edit_1:ru' }],
-            [{ text: "⬅️ Назад", callback_data: "back:ru" }]
-        ]
+  db.collection("users")
+    .find({ id: ctx.from.id })
+    .toArray((err, data) => {
+      let correct = data[0].true_answers;
+
+      let menu;
+      if (correct > 700) {
+        menu = [
+          [
+            { text: "🇷🇺 Язык", callback_data: "lang:en" },
+            { text: '🧐 Средне', callback_data: 'edit_1:ru' },
+          ],
+          [{ text: "📊 Статистика", callback_data: "stats:ru" }],
+          [{ text: "⬅️ Назад", callback_data: "back:ru" }],
+        ];
+      } else {
+        menu = [
+          [
+            { text: "🇷🇺 Язык", callback_data: "lang:en" },
+            { text: '🧐 Средне', callback_data: 'edit_1:ru' },
+          ],
+          [{ text: "⬅️ Назад", callback_data: "back:ru" }],
+        ];
+      }
+
+      ctx.editMessageReplyMarkup({
+        inline_keyboard: menu,
+      });
+      ctx.answerCbQuery('✅ Сложность изменена.');
     });
-    ctx.answerCbQuery('✅ Сложность изменена.');
-}
+};
