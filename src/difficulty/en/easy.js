@@ -21,37 +21,36 @@ module.exports = () => async (ctx) => {
             }
           );
         });
+      db.collection("users")
+        .find({ id: ctx.from.id })
+        .toArray((err, data) => {
+          let correct = data[0].true_answers;
+
+          let menu;
+          if (correct > 700) {
+            menu = [
+              [
+                { text: "🇬🇧 Language", callback_data: "lang" },
+                { text: "🧐 Medium", callback_data: "edit_1" },
+              ],
+              [{ text: "📊 Statistics", callback_data: "stats" }],
+              [{ text: "⬅️ Back", callback_data: "back" }],
+            ];
+          } else {
+            menu = [
+              [
+                { text: "🇬🇧 Language", callback_data: "lang" },
+                { text: "🧐 Medium", callback_data: "edit_1" },
+              ],
+              [{ text: "⬅️ Back", callback_data: "back" }],
+            ];
+          }
+
+          ctx.editMessageReplyMarkup({
+            inline_keyboard: menu,
+          });
+          ctx.answerCbQuery("✅ The difficulty has been changed.");
+        });
     }
   );
-
-  db.collection("users")
-    .find({ id: ctx.from.id })
-    .toArray((err, data) => {
-      let correct = data[0].true_answers;
-
-      let menu;
-      if (correct > 700) {
-        menu = [
-          [
-            { text: "🇬🇧 Language", callback_data: "lang" },
-            { text: '🧐 Medium', callback_data: 'edit_1' },
-          ],
-          [{ text: "📊 Statistics", callback_data: "stats" }],
-          [{ text: "⬅️ Back", callback_data: "back" }],
-        ];
-      } else {
-        menu = [
-          [
-            { text: "🇬🇧 Language", callback_data: "lang" },
-            { text: '🧐 Medium', callback_data: 'edit_1' },
-          ],
-          [{ text: "⬅️ Back", callback_data: "back" }],
-        ];
-      }
-
-      ctx.editMessageReplyMarkup({
-        inline_keyboard: menu,
-      });
-      ctx.answerCbQuery("✅ The difficulty has been changed.");
-    });
 };

@@ -21,37 +21,36 @@ module.exports = () => async (ctx) => {
             }
           );
         });
+      db.collection("users")
+        .find({ id: ctx.from.id })
+        .toArray((err, data) => {
+          let correct = data[0].true_answers;
+
+          let menu;
+          if (correct > 700) {
+            menu = [
+              [
+                { text: "🇷🇺 Язык", callback_data: "lang:en" },
+                { text: "🧐 Средне", callback_data: "edit_1:ru" },
+              ],
+              [{ text: "📊 Статистика", callback_data: "stats:ru" }],
+              [{ text: "⬅️ Назад", callback_data: "back:ru" }],
+            ];
+          } else {
+            menu = [
+              [
+                { text: "🇷🇺 Язык", callback_data: "lang:en" },
+                { text: "🧐 Средне", callback_data: "edit_1:ru" },
+              ],
+              [{ text: "⬅️ Назад", callback_data: "back:ru" }],
+            ];
+          }
+
+          ctx.editMessageReplyMarkup({
+            inline_keyboard: menu,
+          });
+          ctx.answerCbQuery("✅ Сложность изменена.");
+        });
     }
   );
-
-  db.collection("users")
-    .find({ id: ctx.from.id })
-    .toArray((err, data) => {
-      let correct = data[0].true_answers;
-
-      let menu;
-      if (correct > 700) {
-        menu = [
-          [
-            { text: "🇷🇺 Язык", callback_data: "lang:en" },
-            { text: '🧐 Средне', callback_data: 'edit_1:ru' },
-          ],
-          [{ text: "📊 Статистика", callback_data: "stats:ru" }],
-          [{ text: "⬅️ Назад", callback_data: "back:ru" }],
-        ];
-      } else {
-        menu = [
-          [
-            { text: "🇷🇺 Язык", callback_data: "lang:en" },
-            { text: '🧐 Средне', callback_data: 'edit_1:ru' },
-          ],
-          [{ text: "⬅️ Назад", callback_data: "back:ru" }],
-        ];
-      }
-
-      ctx.editMessageReplyMarkup({
-        inline_keyboard: menu,
-      });
-      ctx.answerCbQuery('✅ Сложность изменена.');
-    });
 };
