@@ -10,7 +10,7 @@
   "author": "softik",
   "license": "MIT",
   "dependencies": {
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "moment": "^2.27.0",
     "mongodb": "^3.6.0",
     "mysql": "^2.18.1",
